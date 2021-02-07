@@ -1,3 +1,3 @@
-The source files and exported PNG files of the app map and wireframe diagrams should reside in this directory.
+The initial user experience design of your project will live in this directory by the end of Sprint 0.
 
-Your completed prototype will reside within the 'prototype' subdirectory.
+Place an exported version of your app prototype into this "prototype" sub-directory.
