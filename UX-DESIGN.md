@@ -1,42 +1,70 @@
 # Prototype
-[Link to Prototype](https://www.figma.com/file/TzBnPo9hP4jpvrlr4lr1GE/StoopIt?node-id=0%3A1&t=1Oypt5zmROygY966-1)
 
-# App Map
+[Link to Prototype](https://www.figma.com/file/TzBnPo9hP4jpvrlr4lr1GE/StoopIt?node-id=26%3A375&t=7CPBMIrICX19Gqay-1)
+
+# App Map and High-level Architecture
+
 <!-- App Map Image -->
-![App Map](ux-design/StoopIt-appmap.png)
+
+![App Map and High-level Architecture](ux-design/0-app-map-architecture.png)
 
 # Wireframes
+
 <!-- Wireframe Description -->
-## StoopIt Feed View
-The Stoopit web app starts with a **feed view of the listed stoops**. The user can click on a stoop to view the stoop details. The user can also click on the "Add" button to post a new stoop in the **StoopIt Upload Form**. The user can also click on the "Map" button to view the stoops in **StoopIt Map View**.
 
-![StoopIt Feed View](ux-design/Feed%20View.png)
+## StoopIt Feed
 
-## StoopIt Map View
-The Stoopit web app also has a **map view of the listed stoops**. The user can click on a stoop to view the stoop details. The user can also click on the "Add" button to post a new stoop in the **StoopIt Upload Form**. The user can also click on the "Home" button to view the stoops in **StoopIt Feed View**.
+The StoopIt web app starts with a **feed view of the listed stoops**. The user can click on "View on map" to view to view the stoop on a live map. The user can also click on the "Add" button to post a new stoop in the **StoopIt Upload Form**. The user can also click on the "Map" button to view the stoops in the **StoopIt Map**.
 
-![StoopIt Map View](ux-design/Stoop%20Map%20View.png)
-![StoopIt Map View Info](ux-design/Stoop%20Map%20View2.png)
+![StoopIt Feed](ux-design/1-stoop-feed.png)
+
+## StoopIt Map - Stoop Info and Focused Stoop Info
+
+The StoopIt web app also has a **map view of stoops**. The user can click on a stoop to view the stoop details.
+![StoopIt Map](ux-design/2-stoop-map.png)
+![StoopIt Map Stoop Info](ux-design/3-stoop-map-stoop-info.png)
+
+If a user navigates to the map through the feed's "View on Map" button, they will see a focused stoop with an outline on the map.
+![StoopIt Map Focused Stoop](ux-design/4-stoop-map-focused-stoop.png)
+![StoopIt Map Focused Stoop Info](ux-design/5-stoop-map-focused-stoop-stoop-info.png)
+
+The user can also click on the "Add" button to post a new stoop through the **StoopIt Upload Form**. The user can also click on the "Stoop Feed" button to view the stoops in **StoopIt Feed**.
+
+## StoopIt Camera, Camera Roll, and Confirmation
+
+The StoopIt web app has a **camera view to upload an image of a new stoop**. The user can click on the camera button to take a picture of the stoop or click on the camera roll to upload a previously taken picture. A cancel button and a done button are also provided to cancel the selection or confirm the selection.
+
+![StoopIt Camera](ux-design/6-camera.png)
+![StoopIt Camera Roll](ux-design/7-camera-roll.png)
+
+Once an image has been uploaded or taken, the user can choose to take another photo or continue with their selection to the **StoopIt Upload Form**
+![StoopIt Camera Confirmation](ux-design/8-camera-confirm.png)
 
 ## StoopIt Upload Form
-The Stoopit web app also has a **form to upload a new stoop**. It allows the user to enter the name, description and select the location in **StoopIt Map Select**, and upload an image in the **StoopIt Camera View**.
 
-![StoopIt Upload Form](ux-design/Upload%20Stoop%20Form.png)
-Completed form after user enters everything, showing an upload button:
-![StoopIt Upload Form Completed](ux-design/Upload%20Stoop%20Form%20Completed.png)
+The StoopIt web app also has a **form to upload a new stoop**. It allows the user to upload an image via the **StoopIt Camera**, enter a title for the stoop, enter a description, and select the location either by clicking "Use Current Location" or in the **StoopIt Map Location Select**.
 
-## StoopIt Map Select
-The Stoopit web app has a **map view to select the location of a new stoop**. The user can click on the map to select the location of the stoop. A go-back button is provided to go back to the upload form.
+![StoopIt Upload Form](ux-design/9-upload-stoop-form.png)
 
-![StoopIt Map Select](ux-design/Map%20Select.png)
+## StoopIt Upload Form - Map Location Select and Marker Placed
 
-## StoopIt Camera View
-The Stoopit web app has a **camera view to upload an image of a new stoop**. The user can click on the camera button to take a picture of the stoop. A cancel button and a done button are also provided to cancel the selection or confirm the selection.
+The StoopIt web app has a **map view to select the location of a new stoop**. The user can click on the map to select the location of the stoop. A go-back button is provided to go back to the upload form.
 
-![StoopIt Camera View](ux-design/Camera%20View.png)
-![StoopIt Camera View](ux-design/Camera%20Accept.png)
+![StoopIt Upload Form Location Select](ux-design/10-upload-stoop-form-location-select.png)
+![StoopIt Upload Form Location Select Marker Placed](ux-design/11-upload-stoop-form-location-select-marker-placed.png)
 
-## StoopIt Upload Success View
-The Stoopit web app has a **success view to confirm the upload of a new stoop**.
+## StoopIt Upload Form - Error and Completion
 
-![StoopIt Upload Success View](ux-design/Upload%20Success.png)
+If there are any errors such as an invalid or missing title, a missing image, or a failed upload an error will appear in the **StoopIt Upload Form**.
+![StoopIt Upload Form Error](ux-design/12-upload-stoop-form-error.png)
+
+Once the user enters all fields correctly in the form, an upload button is shown.<br />
+![StoopIt Upload Form Completed](ux-design/13-upload-stoop-form-completed.png)
+
+## StoopIt Upload Form - Uploading and Success
+
+Once a user has clicked "Upload", the form will begin uploading the stoop and no form items are clickable.<br />
+![StoopIt Upload Form Uploading](ux-design/14-upload-stoop-form-uploading.png)
+
+If the stoop fails to upload, the **StoopIt Upload Form Error view is shown**. Otherwise, StoopIt will show a **success view to confirm the upload of a new stoop** and redirect users to the **StoopIt Feed**.
+![StoopIt Upload Success View](ux-design/15-upload-stoop-form-success.png)
