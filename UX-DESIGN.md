@@ -2,8 +2,6 @@
 [Link to Prototype](https://www.figma.com/file/TzBnPo9hP4jpvrlr4lr1GE/StoopIt?node-id=0%3A1&t=1Oypt5zmROygY966-1)
 
 # App Map
-<!-- App Map Description -->
-
 <!-- App Map Image -->
 ![App Map](ux-design/StoopIt-appmap.png)
 
