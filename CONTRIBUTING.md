@@ -8,6 +8,7 @@ This document outlines the rules for contributing to Stoop-It and instructions o
 4. Try to comment your code as readable and clear as possible.
 5. Before making a pull request, make sure the code is clean- NO commented blocks of code or unnecessary blocks should be included.
 6. If something is unsure, always ask first in the Discord channel and finalize once the team is in agreement.
+7. Once the pull request has been reviewed, delete the branch that is no longer needed.
 ## Git Workflow
 Make sure to create a new (separate) branch per feature and create a Pull Request, which will then be reviewed by the team and merged if approved.
 </br>
