@@ -1,8 +1,8 @@
-import logo from './logo.svg';
 import './App.css';
 
 import { useEffect } from 'react'
 import { themeChange } from 'theme-change'
+import MapWrapper from './components/MapWrapper'
 
 const App = () => {
 
@@ -15,20 +15,9 @@ const App = () => {
 
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p className="text-5xl font-bold underline">
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      {/* use geolocation from device and pass in lng,lat as props to center */}
+      {/* center={{lat: , lng: }} */}
+      <MapWrapper />
     </div>
   );
 }
