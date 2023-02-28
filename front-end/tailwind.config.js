@@ -4,9 +4,9 @@ module.exports = {
     "./src/**/*.{js,jsx,ts,tsx}",
   ],
     daisyui: {
-      themes: [
+      themes: ["light", "dark", "cupcake",
         {
-        mytheme: {
+        stoopit: {
         "primary": "#FAA636",
         "secondary": "#F7C4A5",
         "accent": "#EEE5E9",
