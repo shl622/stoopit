@@ -1,7 +1,18 @@
 import logo from './logo.svg';
 import './App.css';
 
+import { useEffect } from 'react'
+import { themeChange } from 'theme-change'
+
 const App = () => {
+
+  // for use with themechange plugin – recommended by daisyui if we are using themes.
+  useEffect(() => {
+    themeChange(false)
+    // 👆 false parameter is required for react project
+  }, [])
+
+
   return (
     <div className="App">
       <header className="App-header">
