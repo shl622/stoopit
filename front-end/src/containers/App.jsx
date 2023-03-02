@@ -33,9 +33,9 @@ const App = () => {
 		<div className="App">
 			{/* Format: center={{lat: , lng: }} */}
 			{/* For when user wants to view full map- use geolocation */}
-			{currentPosition &&
-				<MapWrapper Component={FullMap} center={currentPosition}/>
-			}
+			{currentPosition && (
+				<MapWrapper Component={FullMap} center={currentPosition} />
+			)}
 			{/* <TestForm /> */}
 			{/* For when user wants to view specific stoop location*/}
 			{/* <MapWrapper Component={SingleStoopMap} /> */}

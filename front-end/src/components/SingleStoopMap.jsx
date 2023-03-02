@@ -31,7 +31,6 @@ export default function SingleStoopMap() {
 	}, [])
 
 	useEffect(() => {
-		console.log('singlemap', stoop)
 		const map = initMap({ stoop, ref, center: stoop.location })
 		renderMarker({ stoop, map })
 	}, [stoop])

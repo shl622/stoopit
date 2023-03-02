@@ -27,7 +27,6 @@ export default function FullMap({ center }) {
 	}, [])
 
 	useEffect(() => {
-		console.log(stoops)
 		const map = initMap({ stoops, ref, center })
 		renderInitMarkers({ stoops, map })
 	}, [center, stoops])
