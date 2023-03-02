@@ -2,6 +2,7 @@ import { useRef, useEffect,useState } from "react";
 import {Stoops} from "../mockdata/db"
 
 //mock function for getting mockdata
+//remove later when actual DB is set up
 const mockGetStoops = async () =>{
     return new Promise((resolve,reject)=>{
         resolve(Stoops)
