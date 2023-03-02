@@ -2,8 +2,20 @@
 @tailwind components;
 @tailwind utilities;
 
+:root {
+	/* put color palette here */
+}
+
+html {
+	font-size: 16px;
+}
+
 body {
+	padding: 0;
 	margin: 0;
+	box-sizing: border-box;
+	max-width: 100vw;
+	min-height: 100vh;
 	font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto',
 		'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans',
 		'Helvetica Neue', sans-serif;
@@ -16,7 +28,31 @@ code {
 		monospace;
 }
 
-.fullMap{
-  width:100vw;
-  height:100vh;
+.fullMap {
+	width: 100vw;
+	height: 100vh;
+}
+
+.infowindow div {
+	margin-bottom: 0.5rem;
+}
+
+.infowindow-title {
+	font-size: 2rem;
+}
+
+.infowindow-image {
+	background-color: black;
+	width: 30rem;
+	height: 30rem;
+}
+
+.infowindow-image img {
+	width: 100%;
+	height: 100%;
+	object-fit: contain;
+}
+
+.infowindow-description {
+	font-size: 1rem;
 }
