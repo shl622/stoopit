@@ -1,5 +1,6 @@
 import logo from './logo.svg'
 import './App.css'
+import Card from './Card/Card'
 
 import { useEffect } from 'react'
 import { themeChange } from 'theme-change'
@@ -18,6 +19,7 @@ const App = () => {
 				<p>
 					Edit <code>src/App.js</code> and save to reload.
 				</p>
+				<Card/>
 				<a
 					className="App-link"
 					href="https://reactjs.org"
