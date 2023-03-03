@@ -9,7 +9,7 @@
 
 .card-body {
 	display: grid;
-	grid-template-columns: repeat(2, minmax(0, 1fr));
+	grid-template-columns: 4fr 1fr;
 	gap: 1rem;
 }
 
