@@ -6,15 +6,16 @@ function Card(props) {
 	return (
 		<div className="card card-compact">
 			<figure>
-				<img src={props.img} alt="img" />
+				<img src={props.img} alt="stoop" />
 			</figure>
-			<div className="card-body grid grid-cols-2 gap-4">
+			<div className="card-body">
 				<div className="flex-grow">
 					<h2 className="card-title">{props.title}</h2>
 					<p className="text-left">{props.date}</p>
 					<p className="text-left">{props.description}</p>
 				</div>
-				<div className="card-actions flex justify-end items-center pr-7">
+				{/* Heroicon: map */}
+				<div className="card-actions"> 
 					<svg
 						xmlns="http://www.w3.org/2000/svg"
 						fill="none"

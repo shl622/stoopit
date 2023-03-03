@@ -1,10 +1,22 @@
 .card {
-    height: 20%;
-    background-color: #f0f4f8;
-    box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
-  }
-  
-  .card-compact {
-    padding: 1rem;
-  }
-  
+	height: 20%;
+	background-color: #f0f4f8;
+	box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+}
+
+.card-compact {
+	padding: 1rem;
+}
+
+.card-body {
+	display: grid;
+	grid-template-columns: repeat(2, minmax(0, 1fr));
+	gap: 1rem;
+}
+
+.card-actions {
+	display: flex;
+	justify-content: flex-end;
+	align-items: center;
+	padding-right: 1.75rem; /* 28px / 16 = 1.75rem */
+}
