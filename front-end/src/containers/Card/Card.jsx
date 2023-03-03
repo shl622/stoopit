@@ -3,7 +3,7 @@ import './Card.css'
 
 // return a card with a title, a body and a picture as a component
 function Card(props) {
-	const { locationName, title, date, image } = props
+	const { description, title, date, image } = props
 	return (
 		<>
 			<div className="card card-compact">
@@ -14,7 +14,7 @@ function Card(props) {
 					<div className="text-stack">
 						<h2 className="title">{title}</h2>
 						<p className="text">{date}</p>
-						<p className="text">{locationName}</p>
+						<p className="text">{description}</p>
 					</div>
 					{/* Heroicon: map */}
 					<div className="card-actions">

@@ -12,6 +12,7 @@ function StoopList() {
 				title={stoop.title}
 				date={stoop.date}
 				locationName={stoop.locationName}
+				description={stoop.description}
 			/>
 		)
 	})
