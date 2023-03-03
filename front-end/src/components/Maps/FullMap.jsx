@@ -1,6 +1,6 @@
 import { useRef, useEffect, useState } from 'react'
-import { Stoops } from '../mockdata/db'
-import { initMap, renderInitMarkers } from '../utils/map'
+import { Stoops } from '../../mockdata/db'
+import { initMap, renderInitMarkers } from '../../utils/map'
 
 //mock function for getting mockdata
 //remove later when actual DB is set up

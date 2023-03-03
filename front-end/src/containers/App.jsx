@@ -1,14 +1,17 @@
 import './App.css'
 import { useEffect, useState } from 'react'
-// import { themeChange } from 'theme-change'
-import MapWrapper from '../components/MapWrapper'
-import FullMap from '../components/FullMap'
-// import SingleStoopMap from '../components/SingleStoopMap'
-// import TestForm from '../components/TestForm'
+import { themeChange } from 'theme-change'
+import MapWrapper from './MapContainer'
+import FullMap from '../components/Maps/FullMap'
 
 const App = () => {
 	const [currentPosition, setCurrentPosition] = useState({})
+	const [toggle, setToggle] = useState(false)
+	function showTestMap() {
+		setToggle(!toggle)
+	}
 	useEffect(() => {
+		themeChange(false)
 		function success(pos) {
 			setCurrentPosition({
 				lat: pos.coords.latitude,
@@ -31,15 +34,10 @@ const App = () => {
 
 	return (
 		<div className="App">
-			{/* Format: center={{lat: , lng: }} */}
-			{/* For when user wants to view full map- use geolocation */}
-			{currentPosition && (
+			<button onClick={showTestMap}>Show Stoop Map(Test Purposes)</button>
+			{toggle && currentPosition && (
 				<MapWrapper Component={FullMap} center={currentPosition} />
 			)}
-			{/* <TestForm /> */}
-			{/* For when user wants to view specific stoop location*/}
-			{/* <MapWrapper Component={SingleStoopMap} /> */}
-			{}
 		</div>
 	)
 }
