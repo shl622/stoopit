@@ -1,0 +1,24 @@
+.form-wrapper {
+	max-width: 600px;
+	margin: auto;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: 30px;
+}
+
+.form-control {
+	width: 100%;
+}
+
+.imgContainer {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: center;
+	height: 20rem;
+}
+
+img {
+	max-height: 100%;
+}
