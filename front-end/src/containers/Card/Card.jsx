@@ -1,20 +1,18 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 
 // return a card with a title, a body and a picture as a component
-function Card() {
+function Card(props) {
 	return (
 		<div className="card card-compact h-1/5 bg-base-100 shadow-xl">
 			<figure>
-				<img
-					src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse1.mm.bing.net%2Fth%3Fid%3DOIP.bIjTugAoe9HrHsygQG83oAHaE8%26pid%3DApi&f=1&ipt=eda75fc71a147b0759d4939dc220520179929b0d74ac20e72235a46e66f587ee&ipo=images"
-					alt="Shoes"
-				/>
+				<img src={props.img} alt="img" />
 			</figure>
 			<div className="card-body grid grid-cols-2 gap-4">
 				<div className="flex-grow">
-					<h2 className="card-title">Big Table</h2>
-					<p className="text-left">Posted Mar 1, 2023</p>
-					<p className="text-left">12 West 4th Manhattan</p>
+					<h2 className="card-title">{props.title}</h2>
+					<p className="text-left">{props.date}</p>
+					<p className="text-left">{props.description}</p>
 				</div>
 				<div className="card-actions flex justify-end items-center pr-7">
 					<svg
@@ -35,6 +33,13 @@ function Card() {
 			</div>
 		</div>
 	)
+}
+
+Card.propTypes = {
+	img: PropTypes.string.isRequired,
+	title: PropTypes.string.isRequired,
+	date: PropTypes.string.isRequired,
+	description: PropTypes.string.isRequired
 }
 
 export default Card
