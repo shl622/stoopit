@@ -1,7 +1,4 @@
 export function initMap({ stoops, ref, center }) {
-	console.log(ref)
-	console.log('center', center)
-	console.log('stoops', stoops)
 	const map = new window.google.maps.Map(ref.current, {
 		center,
 		zoom: 18,
