@@ -2,8 +2,20 @@
 @tailwind components;
 @tailwind utilities;
 
+:root {
+	/* put color palette here */
+}
+
+html {
+	font-size: 16px;
+}
+
 body {
+	padding: 0;
 	margin: 0;
+	box-sizing: border-box;
+	max-width: 100vw;
+	min-height: 100vh;
 	font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto',
 		'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans',
 		'Helvetica Neue', sans-serif;
