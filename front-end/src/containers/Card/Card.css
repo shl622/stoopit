@@ -1,0 +1,10 @@
+.card {
+    height: 20%;
+    background-color: #f0f4f8;
+    box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+  }
+  
+  .card-compact {
+    padding: 1rem;
+  }
+  

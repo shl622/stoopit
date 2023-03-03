@@ -4,7 +4,7 @@ import PropTypes from 'prop-types'
 // return a card with a title, a body and a picture as a component
 function Card(props) {
 	return (
-		<div className="card card-compact h-1/5 bg-base-100 shadow-xl">
+		<div className="card card-compact">
 			<figure>
 				<img src={props.img} alt="img" />
 			</figure>
