@@ -1,0 +1,28 @@
+.fullMap {
+	width: 100vw;
+	height: 100vh;
+}
+
+.infowindow div {
+	margin-bottom: 0.5rem;
+}
+
+.infowindow-title {
+	font-size: 2rem;
+}
+
+.infowindow-image {
+	background-color: black;
+	width: 30rem;
+	height: 30rem;
+}
+
+.infowindow-image img {
+	width: 100%;
+	height: 100%;
+	object-fit: contain;
+}
+
+.infowindow-description {
+	font-size: 1rem;
+}
