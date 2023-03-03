@@ -3,6 +3,7 @@ import { useEffect, useState } from 'react'
 import { themeChange } from 'theme-change'
 import MapWrapper from './MapContainer'
 import FullMap from '../components/Maps/FullMap'
+import StoopList from './Card/StoopList'
 
 const App = () => {
 	const [currentPosition, setCurrentPosition] = useState({})
@@ -33,12 +34,17 @@ const App = () => {
 	}, [])
 
 	return (
-		<div className="App">
-			<button onClick={showTestMap}>Show Stoop Map(Test Purposes)</button>
-			{toggle && currentPosition && (
-				<MapWrapper Component={FullMap} center={currentPosition} />
-			)}
-		</div>
+		<>
+			<StoopList />
+			<div className="App">
+				<button onClick={showTestMap}>
+					Show Stoop Map(Test Purposes)
+				</button>
+				{toggle && currentPosition && (
+					<MapWrapper Component={FullMap} center={currentPosition} />
+				)}
+			</div>
+		</>
 	)
 }
 
