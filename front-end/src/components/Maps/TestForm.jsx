@@ -1,3 +1,4 @@
+import './map.css'
 import MapWrapper from '../../containers/MapContainer'
 import SelectionMap from './SelectionMap'
 import { useEffect, useState } from 'react'
