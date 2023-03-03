@@ -11,7 +11,7 @@ function Card(props) {
 					<img className="img" src={image} alt="stoop" />
 				</figure>
 				<div className="card-body">
-					<div className="flex-grow">
+					<div className="text-stack">
 						<h2 className="title">{title}</h2>
 						<p className="text">{date}</p>
 						<p className="text">{locationName}</p>
@@ -24,7 +24,7 @@ function Card(props) {
 							viewBox="0 0 24 24"
 							strokeWidth={1.5}
 							stroke="currentColor"
-							className="w-6 h-6"
+							className="icon"
 						>
 							<path
 								strokeLinecap="round"

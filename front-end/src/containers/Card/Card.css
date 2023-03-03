@@ -35,3 +35,15 @@
 	text-align: left;
 	font-size: 0.9rem;
 }
+
+.icon {
+	width: 1.5rem;
+	height: 1.5rem;
+}
+
+.text-stack {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+}
