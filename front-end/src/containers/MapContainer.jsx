@@ -12,7 +12,7 @@ import { Wrapper } from '@googlemaps/react-wrapper'
 
 export default function Map({ Component, ...props }) {
 	return (
-		<Wrapper apiKey={'AIzaSyCHidGyCom_sk7-LfSvSUB-jt9l1tQLvpQ'}>
+		<Wrapper apiKey={process.env.REACT_APP_GOOGLE_MAPS_API_KEY}>
 			<Component {...props} />
 		</Wrapper>
 	)
