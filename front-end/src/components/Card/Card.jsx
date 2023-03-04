@@ -16,7 +16,7 @@ function Card(props) {
 						<p className="stoop-text">{date}</p>
 						<p className="stoop-text">{description}</p>
 					</div>
-					{/* Heroicon: map */}
+					{/* Heroicon: stroked - map */}
 					<svg
 						xmlns="http://www.w3.org/2000/svg"
 						fill="none"

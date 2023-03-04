@@ -1,16 +1,12 @@
 import './App.css'
 import { useEffect, useState } from 'react'
 import { themeChange } from 'theme-change'
-import MapWrapper from './MapContainer'
-import FullMap from '../components/Maps/FullMap'
-import StoopList from './Card/StoopList'
+import { Routes, Route, Navigate } from 'react-router-dom'
+import MapPage from '../routes/map/MapPage'
+import FeedPage from '../routes/feed/FeedPage'
 
 const App = () => {
 	const [currentPosition, setCurrentPosition] = useState({})
-	const [toggle, setToggle] = useState(false)
-	function showTestMap() {
-		setToggle(!toggle)
-	}
 	useEffect(() => {
 		themeChange(false)
 		function success(pos) {
@@ -34,17 +30,19 @@ const App = () => {
 	}, [])
 
 	return (
-		<>
-			<StoopList />
-			<div className="App">
-				<button onClick={showTestMap}>
-					Show Stoop Map(Test Purposes)
-				</button>
-				{toggle && currentPosition && (
-					<MapWrapper Component={FullMap} center={currentPosition} />
-				)}
-			</div>
-		</>
+		<div className="app">
+			<main>
+				<Routes>
+					<Route path="/" element={<Navigate to="/feed" replace />} />
+					<Route path="/feed" element={<FeedPage />} />
+					<Route path="/upload" />
+					<Route
+						path="/map"
+						element={<MapPage currentPosition={currentPosition} />}
+					/>
+				</Routes>
+			</main>
+		</div>
 	)
 }
 
