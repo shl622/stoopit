@@ -5,9 +5,9 @@
 	box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
 		0 2px 4px -1px rgba(0, 0, 0, 0.06);
 	margin-bottom: 1rem;
-    margin-left: 1rem;
-    margin-right: 1rem;
-    margin-top: 1rem;
+	margin-left: 1rem;
+	margin-right: 1rem;
+	margin-top: 1rem;
 }
 
 .body {
@@ -17,11 +17,11 @@
 }
 
 .icon {
-    width: 2rem;
-    height: 2rem;
-    display: flex;
-    display: block;
-    margin: auto;
+	width: 2rem;
+	height: 2rem;
+	display: flex;
+	display: block;
+	margin: auto;
 }
 
 .title {
@@ -35,10 +35,9 @@
 	font-size: 0.9rem;
 }
 
-
 .text-stack {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: flex-start;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: flex-start;
 }
