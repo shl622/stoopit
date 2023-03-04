@@ -26,6 +26,7 @@ module.exports = {
 		'react/prop-types': 'off',
 		'prefer-const': 'error',
 		'no-unused-vars': 'error',
-		'no-var': 'error'
+		'no-var': 'error',
+		'no-debugger': 'off'
 	}
 }
