@@ -2,6 +2,8 @@ import './SubmitForm.css'
 
 import { useForm } from 'react-hook-form'
 import { useState, useEffect } from 'react'
+import TestForm from '../Maps/TestForm'
+// import imgIcon from '../../icons/img'
 
 const SubmitForm = ({ imageBlob, getCurrentLocation }) => {
 	const [selectedFile, setSelectedFile] = useState()
@@ -55,14 +57,15 @@ const SubmitForm = ({ imageBlob, getCurrentLocation }) => {
 				<div className="form-control">
 					<div className="imgContainer">
 						{preview && <img alt="Stoop" src={preview} />}
+						{/* {!preview && <imgIcon />} */}
 					</div>
 					<label
-						htmlFor="image"
+						htmlFor="stoopimage"
 						className="input-group input-group-vertical"
 					>
 						<span>Image</span>
 						<input
-							id="image"
+							id="stoopimage"
 							className="input input-bordered"
 							type="file"
 							name="image"
@@ -76,12 +79,12 @@ const SubmitForm = ({ imageBlob, getCurrentLocation }) => {
 				</div>
 				<div className="form-control">
 					<label
-						htmlFor="title"
+						htmlFor="stooptitle"
 						className="input-group input-group-vertical"
 					>
 						<span>Title</span>
 						<input
-							id="title"
+							id="stooptitle"
 							className="input input-bordered"
 							type="text"
 							name="title"
@@ -96,12 +99,12 @@ const SubmitForm = ({ imageBlob, getCurrentLocation }) => {
 				</div>
 				<div className="form-control">
 					<label
-						htmlFor="desc"
+						htmlFor="stoopdesc"
 						className="input-group input-group-vertical"
 					>
 						<span>Description</span>
 						<input
-							id="desc"
+							id="stoopdesc"
 							className="input input-bordered"
 							type="textarea"
 							name="description"
@@ -116,12 +119,12 @@ const SubmitForm = ({ imageBlob, getCurrentLocation }) => {
 				</div>
 				<div className="form-control">
 					<label
-						htmlFor="loc"
+						htmlFor="stooploc"
 						className="input-group input-group-vertical"
 					>
 						<span>Location</span>
 						<input
-							id="loc"
+							id="stooploc"
 							placeholder="Please use either button below to select location"
 							className="input input-bordered input-warning"
 							type="text"
@@ -136,6 +139,7 @@ const SubmitForm = ({ imageBlob, getCurrentLocation }) => {
 						<p className="errorMsg">{errors.location.message}</p>
 					)}
 					{/* this will be merged with Brian's code, which already provides these methods */}
+					<TestForm />
 					<button type="button" onClick={manageCurrentLocation}>
 						Use Current Device Location
 					</button>
@@ -144,10 +148,10 @@ const SubmitForm = ({ imageBlob, getCurrentLocation }) => {
 					</button>
 				</div>
 				<div className="form-control upload">
-					<label htmlFor="upload">
+					<label htmlFor="stoopupload">
 						<button
 							className="btn btn-primary btn-block"
-							id="upload"
+							id="stoopupload"
 							type="submit"
 						>
 							Upload Stoop

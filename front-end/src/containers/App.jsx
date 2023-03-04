@@ -1,7 +1,7 @@
 import './App.css'
 import { useEffect, useState } from 'react'
 import { themeChange } from 'theme-change'
-import SubmitForm from '../SubmitForm/SubmitForm'
+import SubmitForm from '../components/SubmitForm/SubmitForm'
 import MapWrapper from './MapContainer'
 import FullMap from '../components/Maps/FullMap'
 
@@ -39,7 +39,7 @@ const App = () => {
 			{toggle && currentPosition && (
 				<MapWrapper Component={FullMap} center={currentPosition} />
 			)}
-      <SubmitForm />
+			<SubmitForm />
 		</div>
 	)
 }
