@@ -10,13 +10,13 @@
 	margin-top: 1rem;
 }
 
-.body {
+.card-text-icon-body {
 	display: grid;
 	grid-template-columns: 4fr 1fr;
 	gap: 1rem;
 }
 
-.icon {
+.card-map-icon {
 	width: 2rem;
 	height: 2rem;
 	display: flex;
@@ -24,13 +24,13 @@
 	margin: auto;
 }
 
-.title {
+.stoop-title {
 	font-size: 1.2rem;
 	font-weight: 600;
 	margin-bottom: 0.5rem;
 }
 
-.text {
+.stoop-text {
 	text-align: left;
 	font-size: 0.9rem;
 }

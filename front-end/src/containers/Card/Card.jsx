@@ -10,11 +10,11 @@ function Card(props) {
 				<figure>
 					<img className="img" src={image} alt="stoop" />
 				</figure>
-				<div className="card-body body">
+				<div className="card-body card-text-icon-body">
 					<div className="text-stack">
-						<h2 className="title">{title}</h2>
-						<p className="text">{date}</p>
-						<p className="text">{description}</p>
+						<h2 className="stoop-title">{title}</h2>
+						<p className="stoop-text">{date}</p>
+						<p className="stoop-text">{description}</p>
 					</div>
 					{/* Heroicon: map */}
 					<svg
@@ -23,7 +23,7 @@ function Card(props) {
 						viewBox="0 0 24 24"
 						strokeWidth={1.5}
 						stroke="currentColor"
-						className="icon"
+						className="card-map-icon"
 					>
 						<path
 							strokeLinecap="round"
