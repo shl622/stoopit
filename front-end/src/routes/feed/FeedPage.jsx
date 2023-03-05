@@ -1,4 +1,4 @@
-import { Stoops } from '../../mockData/db'
+import { Stoops } from '../../mockdata/db'
 import Card from '../../components/Card/Card'
 
 const FeedPage = () => {

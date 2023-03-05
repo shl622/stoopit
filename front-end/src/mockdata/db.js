@@ -1,4 +1,4 @@
-//mock data for map
+// mock data for map
 
 export const Stoops = [
 	{

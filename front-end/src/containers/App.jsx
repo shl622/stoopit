@@ -4,6 +4,7 @@ import { themeChange } from 'theme-change'
 import { Routes, Route, Navigate } from 'react-router-dom'
 import MapPage from '../routes/map/MapPage'
 import FeedPage from '../routes/feed/FeedPage'
+import BottomNav from '../components/BottomNav/BottomNav'
 
 const App = () => {
 	const [currentPosition, setCurrentPosition] = useState({})
@@ -42,6 +43,7 @@ const App = () => {
 					/>
 				</Routes>
 			</main>
+			<BottomNav />
 		</div>
 	)
 }
