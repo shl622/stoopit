@@ -1,9 +1,8 @@
-import React from 'react'
-import './StoopList.css'
-import { Stoops } from '../../mockdata/db'
-import Card from './Card'
+import { Stoops } from '../../mockData/db'
+import Card from '../../components/Card/Card'
 
-function StoopList() {
+const FeedPage = () => {
+	// TODO: Fetch from api
 	const stoopsList = Stoops.map((stoop) => {
 		return (
 			<Card
@@ -20,4 +19,4 @@ function StoopList() {
 	return <div>{stoopsList}</div>
 }
 
-export default StoopList
+export default FeedPage

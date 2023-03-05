@@ -9,7 +9,8 @@ module.exports = {
 		'plugin:css/recommended',
 		'plugin:jsx-a11y/recommended',
 		'react-app',
-		'react-app/jest'
+		'react-app/jest',
+		'prettier'
 	],
 	overrides: [],
 	parserOptions: {

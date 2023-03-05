@@ -32,11 +32,19 @@ Install dependencies in the package.json file.
 npm install
 ```
 
+Start the dev server.
+
+```javascript
+npm start
+```
+
 Ask repo maintainers for the Google Maps API key in the #team-stoopit channel and put it in your .env file.
 
 ## Best Practices
 
-If you're adding code, please follow how our file structure is set up. Components should be in the components directory with each in their own folder to keep everything organized.
+-   If you're adding code, please follow how our file structure is set up. Components should be in the components directory with each in their own folder to keep everything organized.
+
+-   [Husky](https://github.com/typicode/husky) git hooks are enabled to maintain clean and working code. On every commit, your code will be formatted and linted to find any styling issues. On every push, code will be unit tested and must pass to push to origin.
 
 ## Building and Testing
 
