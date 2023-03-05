@@ -1,6 +1,6 @@
 import '../map.css'
 import { useRef, useEffect, useState } from 'react'
-import { Stoops } from '../../../mockData/db'
+import { Stoops } from '../../../mockdata/db'
 import { initMap, renderInitMarkers } from '../../../utils/map'
 
 const mockGetStoops = async () => {
