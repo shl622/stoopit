@@ -5,7 +5,7 @@ import MapIcon from '../Icons/MapIcon'
 
 export default function BottomNav() {
 	return (
-		<div className="btm-nav">
+		<footer className="btm-nav">
 			<button className="btm-nav-icon">
 				<HomeIcon />
 				<span className="btm-nav-label">Feed</span>
@@ -18,6 +18,6 @@ export default function BottomNav() {
 				<MapIcon />
 				<span className="btm-nav-label">Map</span>
 			</button>
-		</div>
+		</footer>
 	)
 }
