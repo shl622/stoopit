@@ -20,7 +20,16 @@ module.exports = {
 					info: '#91C4F2',
 					success: '#CEEC97',
 					warning: '#FBBD23',
-					error: '#F87272'
+					error: '#F87272',
+					'--primary': '#FAA636',
+					'--secondary': '#F7C4A5',
+					'--accent': '#EEE5E9',
+					'--neutral': '#000',
+					'--base-100': '#FFFFFF',
+					'--info': '#91C4F2',
+					'--success': '#CEEC97',
+					'--warning': '#FBBD23',
+					'--error': '#F87272'
 				}
 			}
 		]

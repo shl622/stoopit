@@ -2,24 +2,26 @@ import './SubmitForm.css'
 
 import { useForm } from 'react-hook-form'
 import { useState, useEffect } from 'react'
-// import TestForm from '../Maps/TestForm'
-import useLocation from '../../hooks/useLocation'
+import useLocationHook from '../../hooks/useLocationHook'
 import SelectionMap from '../Maps/SelectionMap'
-import MapWrapper from '../../containers/MapContainer'
-import ImgIcon from '../../icons/img'
+import MapWrapper from '../../containers/MapWrapper'
+import ImgIcon from '../Icons/Img'
 
-const SubmitForm = ({ imageBlob, getCurrentLocation }) => {
-	const [selectedFile, setSelectedFile] = useState()
+const SubmitForm = ({ imageBlob = undefined }) => {
+	const [selectedFile, setSelectedFile] = useState(imageBlob)
 	const [preview, setPreview] = useState()
 	const [showSelectionMap, setShowSelectionMap] = useState(false)
-	const currentPosition = useLocation()
+	const currentPosition = useLocationHook()
+
+	useEffect(() => {
+		window.history.replaceState({}, document.title)
+	})
 
 	function handleShowSelectionMap() {
 		setShowSelectionMap(true)
 	}
 
 	const handleGeoLocation = () => {
-		console.log(currentPosition)
 		setValue('location', `${currentPosition.lat}, ${currentPosition.lng}`)
 	}
 
@@ -142,10 +144,10 @@ const SubmitForm = ({ imageBlob, getCurrentLocation }) => {
 					)}
 
 					<div className='buttonWrapper'>
-						<button className="btn btn-info btn-wide" type="button" onClick={handleGeoLocation}>
+						<button className="btn btn-info " type="button" onClick={handleGeoLocation}>
 							Use Current Location
 						</button>
-						<button className="btn btn-info btn-wide" type="button" onClick={handleShowSelectionMap}>
+						<button className="btn btn-info" type="button" onClick={handleShowSelectionMap}>
 							{' '}
 							Select on Map
 						</button>

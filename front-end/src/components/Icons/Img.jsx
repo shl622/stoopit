@@ -1,4 +1,6 @@
-const ImgIcon = () => {
+
+
+export default function ImgIcon ({ className }) {
 	return (
 		<svg
 			xmlns="http://www.w3.org/2000/svg"
@@ -6,7 +8,7 @@ const ImgIcon = () => {
 			viewBox="0 0 24 24"
 			strokeWidth={1.5}
 			stroke="currentColor"
-			className="w-6 h-6"
+			className={className}
 		>
 			<path
 				strokeLinecap="round"
@@ -16,5 +18,3 @@ const ImgIcon = () => {
 		</svg>
 	)
 }
-
-export default ImgIcon

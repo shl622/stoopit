@@ -1,7 +1,7 @@
 import './map.css'
-import MapWrapper from '../../containers/MapContainer'
+import MapWrapper from '../../containers/MapWrapper'
 import SelectionMap from './SelectionMap'
-import useLocation from '../../hooks/useLocation'
+import useLocation from '../../hooks/useLocationHook'
 import { useState } from 'react'
 
 export default function TestForm() {

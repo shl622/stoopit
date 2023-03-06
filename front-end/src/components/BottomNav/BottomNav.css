@@ -1,0 +1,9 @@
+.btm-nav-icon {
+	background-color: var(--primary);
+	color: black;
+}
+
+.hide-input {
+	appearance: none;
+	display: none;
+}

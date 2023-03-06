@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 
 // this is the custom Hook
-const useLocation = () => {
+const useLocationHook = () => {
 	const [currentPosition, setCurrentPosition] = useState({})
 
 	useEffect(() => {
@@ -34,4 +34,4 @@ const useLocation = () => {
 	return currentPosition
 }
 
-export default useLocation
+export default useLocationHook
