@@ -1,5 +1,5 @@
 import FullMap from '../../components/Maps/FullMap/FullMap'
-import MapWrapper from '../../containers/MapContainer'
+import MapWrapper from '../../containers/MapWrapper'
 const MapPage = ({ currentPosition }) => {
 	return (
 		<>

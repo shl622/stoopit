@@ -8,10 +8,10 @@ beforeAll(() => {
 })
 
 describe('FullMap', () => {
-	test('if it renders the map correctly', async () => {
+	it('should render the map correctly', async () => {
 		render(<FullMap center={Stoops[0].location} />)
 		await act(async () => {
-			expect(screen.getByTestId('fullMap')).toBeInTheDocument()
+			expect(screen.getByTestId('full-map')).toBeInTheDocument()
 		})
 	})
 })

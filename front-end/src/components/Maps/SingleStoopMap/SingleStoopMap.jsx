@@ -22,7 +22,7 @@ export default function SingleStoopMap() {
 				const stoop = await mockGetStoop()
 				setStoop(stoop)
 			} catch (err) {
-				console.log(err)
+				console.error(err)
 			}
 		}
 		getStoop()
