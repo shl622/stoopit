@@ -2,9 +2,10 @@ import './App.css'
 import { useEffect, useState } from 'react'
 import { themeChange } from 'theme-change'
 import { Routes, Route, Navigate } from 'react-router-dom'
-import MapPage from '../routes/map/MapPage'
-import FeedPage from '../routes/feed/FeedPage'
-import BottomNav from '../components/BottomNav/BottomNav'
+import MapPage from '../../routes/map/MapPage'
+import FeedPage from '../../routes/feed/FeedPage'
+import BottomNav from '../../components/BottomNav/BottomNav'
+import UploadPage from '../../routes/upload/UploadPage'
 
 const App = () => {
 	const [currentPosition, setCurrentPosition] = useState({})
@@ -23,7 +24,7 @@ const App = () => {
 			if (window.navigator.geolocation) {
 				window.navigator.geolocation.getCurrentPosition(success, error)
 			} else {
-				alert('Device does not support location services')
+				console.error('Device does not support location services')
 				error()
 			}
 		}
@@ -36,7 +37,7 @@ const App = () => {
 				<Routes>
 					<Route path="/" element={<Navigate to="/feed" replace />} />
 					<Route path="/feed" element={<FeedPage />} />
-					<Route path="/upload" />
+					<Route path="/upload" element={<UploadPage />} />
 					<Route
 						path="/map"
 						element={<MapPage currentPosition={currentPosition} />}
