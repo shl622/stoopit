@@ -1,4 +1,4 @@
-const imgIcon = () => {
+const ImgIcon = () => {
 	return (
 		<svg
 			xmlns="http://www.w3.org/2000/svg"
@@ -17,4 +17,4 @@ const imgIcon = () => {
 	)
 }
 
-export default imgIcon
+export default ImgIcon

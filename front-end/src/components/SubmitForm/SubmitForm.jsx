@@ -6,7 +6,7 @@ import { useState, useEffect } from 'react'
 import useLocation from '../../hooks/useLocation'
 import SelectionMap from '../Maps/SelectionMap'
 import MapWrapper from '../../containers/MapContainer'
-// import imgIcon from '../../icons/img'
+import ImgIcon from '../../icons/img'
 
 const SubmitForm = ({ imageBlob, getCurrentLocation }) => {
 	const [selectedFile, setSelectedFile] = useState()
@@ -59,7 +59,7 @@ const SubmitForm = ({ imageBlob, getCurrentLocation }) => {
 				<div className="form-control">
 					<div className="imgContainer">
 						{preview && <img alt="Stoop" src={preview} />}
-						{/* {!preview && <imgIcon />} */}
+						{!preview && <ImgIcon />}
 					</div>
 					<label
 						htmlFor="stoopimage"
@@ -130,7 +130,7 @@ const SubmitForm = ({ imageBlob, getCurrentLocation }) => {
 							placeholder="Please use either button below to select location"
 							className="input input-bordered input-warning"
 							type="text"
-							// disabled
+							disabled
 							name="location"
 							{...register('location', {
 								required: 'Location is required.'
@@ -141,13 +141,15 @@ const SubmitForm = ({ imageBlob, getCurrentLocation }) => {
 						<p className="errorMsg">{errors.location.message}</p>
 					)}
 
-					<button type="button" onClick={handleGeoLocation}>
-						Use Current Location
-					</button>
-					<button type="button" onClick={handleShowSelectionMap}>
-						{' '}
-						Select on Map
-					</button>
+					<div className='buttonWrapper'>
+						<button className="btn btn-info btn-wide" type="button" onClick={handleGeoLocation}>
+							Use Current Location
+						</button>
+						<button className="btn btn-info btn-wide" type="button" onClick={handleShowSelectionMap}>
+							{' '}
+							Select on Map
+						</button>
+					</div>
 					<div>
 						{showSelectionMap && (
 							<MapWrapper
@@ -157,13 +159,6 @@ const SubmitForm = ({ imageBlob, getCurrentLocation }) => {
 							/>
 						)}
 					</div>
-					{/* <TestForm />
-					<button type="button" onClick={manageCurrentLocation}>
-						Use Current Device Location
-					</button>
-					<button type="button" onClick={getMapLocation}>
-						Select Location on Map
-					</button> */}
 				</div>
 				<div className="form-control upload">
 					<label htmlFor="stoopupload">
