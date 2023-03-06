@@ -14,6 +14,7 @@ export default function BottomNav() {
 		const input = e.target
 		if (!input.files || input.files.length < 1) {
 			console.error('Failed to capture image')
+			setDisabled(false)
 			return
 		}
 
