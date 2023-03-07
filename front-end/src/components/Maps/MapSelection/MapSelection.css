@@ -1,0 +1,51 @@
+@keyframes popUpFadeIn {
+	0% {
+		opacity: 0;
+	}
+	100% {
+		opacity: 1;
+	}
+}
+
+.instructionPopUp {
+	position: fixed;
+	display: flex;
+	justify-content: center;
+	top: 1rem;
+	left: 50%;
+	transform: translateX(-50%);
+	width: 40rem;
+	height: 2rem;
+	z-index: 1000;
+	border-radius: 1rem;
+	background-color: var(--base-100);
+	box-shadow: -0.5rem 0.5rem 4px rgba(0, 0, 0, 0.25);
+	padding: 0.3rem;
+	text-align: center;
+	align-items: center;
+}
+
+.instructionPopUp button {
+	margin-left: 1rem;
+	background-color: var(--secondary);
+	border-radius: 2rem;
+	padding: 2px 1rem;
+}
+
+.instructionPopUpHidden {
+	opacity: 0;
+}
+
+.instructionPopUpEnter {
+	animation: popUpFadeIn 2s 0.5s ease-out backwards;
+}
+
+.confirmMsgPopUpEnter {
+	opacity: 1;
+	animation: popUpFadeIn 1s ease-out backwards;
+}
+
+.instructionPopUpLeave {
+	opacity: 0;
+	animation: popUpFadeIn 2s 0.5s ease-out reverse backwards;
+}
