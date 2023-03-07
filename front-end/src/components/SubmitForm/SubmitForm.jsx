@@ -11,6 +11,7 @@ const SubmitForm = ({ imageBlob = undefined }) => {
 	const [selectedFile, setSelectedFile] = useState(imageBlob)
 	const [preview, setPreview] = useState()
 	const [showSelectionMap, setShowSelectionMap] = useState(false)
+	// const currentMapPosition = useLocationHook()
 	const currentPosition = useLocationHook()
 
 	useEffect(() => {
@@ -55,19 +56,22 @@ const SubmitForm = ({ imageBlob = undefined }) => {
 		setSelectedFile(e.target.files[0])
 	}
 
+	// change css to input-success once they have been filled out
+
 	return (
 		<div>
 			<form className="form-wrapper" onSubmit={handleSubmit(onSubmit)}>
 				<div className="form-control">
-					<div className="imgContainer">
-						{preview && <img alt="Stoop" src={preview} />}
-						{!preview && <ImgIcon />}
-					</div>
 					<label
 						htmlFor="stoopimage"
 						className="input-group input-group-vertical"
 					>
 						<span>Image</span>
+						{/* <button type={button}>Choose File</button> */}
+						<div className="imgContainer input input-bordered">
+							{preview && <img alt="Stoop" src={preview} />}
+							{!preview && <ImgIcon />}
+						</div>
 						<input
 							id="stoopimage"
 							className="input input-bordered"
