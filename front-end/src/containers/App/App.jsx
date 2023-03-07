@@ -6,7 +6,6 @@ import MapPage from '../../routes/map/MapPage'
 import FeedPage from '../../routes/feed/FeedPage'
 import BottomNav from '../../components/BottomNav/BottomNav'
 import UploadPage from '../../routes/upload/UploadPage'
-import MapSelect from '../../routes/map/MapSelect'
 
 const App = () => {
 	const [currentPosition, setCurrentPosition] = useState({})
@@ -42,12 +41,6 @@ const App = () => {
 					<Route
 						path="/map"
 						element={<MapPage currentPosition={currentPosition} />}
-					/>
-					<Route
-						path="/mapselection"
-						element={
-							<MapSelect currentPosition={currentPosition} />
-						}
 					/>
 				</Routes>
 			</main>
