@@ -10,7 +10,6 @@ export const useLocationHook = () => {
 			lat: coords.latitude,
 			lng: coords.longitude
 		})
-		console.log(coords)
 	}
 	const onError = (error) => {
 		setError(error.message)
