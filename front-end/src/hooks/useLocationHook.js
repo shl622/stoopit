@@ -1,41 +1,28 @@
-import { useEffect, useState } from 'react'
-
 // this is the custom Hook
-const useLocationHook = () => {
-	const [currentPosition, setCurrentPosition] = useState({})
 
+import { useState, useEffect } from 'react'
+export const useLocationHook = () => {
+	const [position, setPosition] = useState({})
+	const [error, setError] = useState(null)
+
+	const onChange = ({ coords }) => {
+		setPosition({
+			lat: coords.latitude,
+			lng: coords.longitude
+		})
+		console.log(coords)
+	}
+	const onError = (error) => {
+		setError(error.message)
+	}
 	useEffect(() => {
-		console.log('getting location')
-		console.log(currentPosition)
-		const getLocation = () => {
-			return new Promise((resolve, reject) => {
-				if (window.navigator.geolocation) {
-					window.navigator.geolocation.getCurrentPosition(
-						resolve,
-						reject,
-						{maximumAge:10000, timeout:5000, enableHighAccuracy:true}
-					)
-				} else {
-					reject('Device does not support location services')
-				}
-			})
+		const geo = navigator.geolocation
+		if (!geo) {
+			setError('Geolocation is not supported')
+			return
 		}
-
-		getLocation()
-			.then((pos) => {
-				const { latitude, longitude } = pos.coords
-				setCurrentPosition({ lat: latitude, lng: longitude })
-				console.log(latitude, longitude)
-			})
-			.catch((err) => {
-				console.log(err)
-				setCurrentPosition({ lat: 40.7309, lng: -73.9973 })
-				alert(err)
-			})
-		getLocation()
-	}, [setCurrentPosition])
-
-	return currentPosition
+		const watcher = geo.watchPosition(onChange, onError)
+		return () => geo.clearWatch(watcher)
+	}, [])
+	return { ...position, error }
 }
-
-export default useLocationHook

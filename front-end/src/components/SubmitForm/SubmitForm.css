@@ -7,8 +7,12 @@
 	gap: 30px;
 }
 
+.prose {
+	max-width: unset;
+}
+
 .btn-info {
-	font-size: .7rem;
+	font-size: 0.7rem;
 }
 
 .form-control {

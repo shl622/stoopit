@@ -2,7 +2,7 @@ import './SubmitForm.css'
 
 import { useForm } from 'react-hook-form'
 import { useState, useEffect } from 'react'
-import useLocationHook from '../../hooks/useLocationHook'
+import { useLocationHook } from '../../hooks/useLocationHook'
 import SelectionMap from '../Maps/MapSelection/MapSelection'
 import ImgIcon from '../Icons/Img'
 import Map from '../../containers/MapWrapper'
@@ -21,7 +21,7 @@ const SubmitForm = ({ imageBlob = undefined }) => {
 		defaultValues: {
 			title: '',
 			description: '',
-			location: '',
+			location: ''
 		}
 	})
 
@@ -67,7 +67,7 @@ const SubmitForm = ({ imageBlob = undefined }) => {
 	}, [selectedFile])
 
 	return (
-		<div className='prose'>
+		<div className="prose">
 			<h1>New Stoop Upload Form</h1>
 			<form className="form-wrapper" onSubmit={handleSubmit(onSubmit)}>
 				<div className="form-control">
@@ -137,7 +137,7 @@ const SubmitForm = ({ imageBlob = undefined }) => {
 							name="location"
 							{...register('location', {
 								required: 'Location is required.',
-								pattern: { 
+								pattern: {
 									value: /^(?!.*undefined)^(?!.*null).*/,
 									message: 'Location error: please try again'
 								}
@@ -148,17 +148,25 @@ const SubmitForm = ({ imageBlob = undefined }) => {
 						<p className="errorMsg">{errors.location.message}</p>
 					)}
 
-					<div className='buttonWrapper'>
-						<button className="btn btn-info " type="button" onClick={() => handleGeoLocation(currentPosition)}>
+					<div className="buttonWrapper">
+						<button
+							className="btn btn-info "
+							type="button"
+							onClick={() => handleGeoLocation(currentPosition)}
+						>
 							Use Current Location
 						</button>
-						<button className="btn btn-info" type="button" onClick={handleShowSelectionMap}>
+						<button
+							className="btn btn-info"
+							type="button"
+							onClick={handleShowSelectionMap}
+						>
 							{' '}
 							Select on Map
 						</button>
 					</div>
 					{showSelectionMap && (
-						<div className='mapDiv'>
+						<div className="mapDiv">
 							<Map
 								Component={SelectionMap}
 								center={currentPosition}

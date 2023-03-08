@@ -54,7 +54,9 @@ export default function SelectionMap({ center, setMapLocation }) {
 				}`}
 			>
 				<p>Selected</p>
-				<button type='button' onClick={handleConfirm}>Confirm</button>
+				<button type="button" onClick={handleConfirm}>
+					Confirm
+				</button>
 			</div>
 		</div>
 	)
