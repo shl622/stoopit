@@ -6,6 +6,7 @@ const useLocationHook = () => {
 
 	useEffect(() => {
 		console.log('getting location')
+		console.log(currentPosition)
 		const getLocation = () => {
 			return new Promise((resolve, reject) => {
 				if (window.navigator.geolocation) {
@@ -24,8 +25,10 @@ const useLocationHook = () => {
 			.then((pos) => {
 				const { latitude, longitude } = pos.coords
 				setCurrentPosition({ lat: latitude, lng: longitude })
+				console.log(latitude, longitude)
 			})
 			.catch((err) => {
+				console.log(err)
 				setCurrentPosition({ lat: 40.7309, lng: -73.9973 })
 				alert(err)
 			})

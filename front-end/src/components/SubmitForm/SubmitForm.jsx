@@ -3,38 +3,56 @@ import './SubmitForm.css'
 import { useForm } from 'react-hook-form'
 import { useState, useEffect } from 'react'
 import useLocationHook from '../../hooks/useLocationHook'
-import SelectionMap from '../Maps/SelectionMap'
-import MapWrapper from '../../containers/MapWrapper'
+import SelectionMap from '../Maps/MapSelection/MapSelection'
 import ImgIcon from '../Icons/Img'
+import Map from '../../containers/MapWrapper'
 
 const SubmitForm = ({ imageBlob = undefined }) => {
-	const [selectedFile, setSelectedFile] = useState(imageBlob)
+	const [selectedFile] = useState(imageBlob)
 	const [preview, setPreview] = useState()
 	const [showSelectionMap, setShowSelectionMap] = useState(false)
-	// const currentMapPosition = useLocationHook()
 	const currentPosition = useLocationHook()
-
-	useEffect(() => {
-		window.history.replaceState({}, document.title)
-	})
-
-	function handleShowSelectionMap() {
-		setShowSelectionMap(true)
-	}
-
-	const handleGeoLocation = () => {
-		setValue('location', `${currentPosition.lat}, ${currentPosition.lng}`)
-	}
-
 	const {
 		register,
 		handleSubmit,
 		setValue,
 		formState: { errors }
-	} = useForm()
+	} = useForm({
+		defaultValues: {
+			title: '',
+			description: '',
+			location: '',
+		}
+	})
+
+	function handleShowSelectionMap() {
+		setShowSelectionMap(!showSelectionMap)
+	}
+
+	const handleGeoLocation = (loc) => {
+		setValue('location', `${loc.lat}, ${loc.lng}`)
+	}
+
+	useEffect(() => {
+		window.history.replaceState({}, document.title)
+	}, [])
 
 	const onSubmit = (data) => {
+		data.image = selectedFile
 		console.log(data)
+
+		// FOR BACKEND
+		// const res = await fetch('SOMETHING', {
+		// 	method: 'POST',
+		// 	body: formData,
+		// 	}).then((res) => res.json());
+		// console.log(res);
+		// alert(JSON.stringify(`${res.message}, status: ${res.status}`));
+	}
+
+	const setMapLocation = (location) => {
+		handleShowSelectionMap()
+		handleGeoLocation(location)
 	}
 
 	useEffect(() => {
@@ -48,18 +66,11 @@ const SubmitForm = ({ imageBlob = undefined }) => {
 		return () => URL.revokeObjectURL(objectUrl)
 	}, [selectedFile])
 
-	const handleUpload = (e) => {
-		if (!e.target.files || e.target.files.length === 0) {
-			setSelectedFile(undefined)
-			return
-		}
-		setSelectedFile(e.target.files[0])
-	}
-
 	// change css to input-success once they have been filled out
 
 	return (
-		<div>
+		<div className='prose'>
+			<h1>New Stoop Upload Form</h1>
 			<form className="form-wrapper" onSubmit={handleSubmit(onSubmit)}>
 				<div className="form-control">
 					<label
@@ -67,22 +78,10 @@ const SubmitForm = ({ imageBlob = undefined }) => {
 						className="input-group input-group-vertical"
 					>
 						<span>Image</span>
-						{/* <button type={button}>Choose File</button> */}
 						<div className="imgContainer input input-bordered">
 							{preview && <img alt="Stoop" src={preview} />}
 							{!preview && <ImgIcon />}
 						</div>
-						<input
-							id="stoopimage"
-							className="input input-bordered"
-							type="file"
-							name="image"
-							accept="image/*"
-							{...register('image', {
-								required: 'Image is required.'
-							})}
-							onChange={handleUpload}
-						/>
 					</label>
 				</div>
 				<div className="form-control">
@@ -139,7 +138,11 @@ const SubmitForm = ({ imageBlob = undefined }) => {
 							disabled
 							name="location"
 							{...register('location', {
-								required: 'Location is required.'
+								required: 'Location is required.',
+								pattern: { 
+									value: /^(?!.*undefined)^(?!.*null).*/,
+									message: 'Location error: please try again'
+								}
 							})}
 						/>
 					</label>
@@ -148,7 +151,7 @@ const SubmitForm = ({ imageBlob = undefined }) => {
 					)}
 
 					<div className='buttonWrapper'>
-						<button className="btn btn-info " type="button" onClick={handleGeoLocation}>
+						<button className="btn btn-info " type="button" onClick={() => handleGeoLocation(currentPosition)}>
 							Use Current Location
 						</button>
 						<button className="btn btn-info" type="button" onClick={handleShowSelectionMap}>
@@ -156,15 +159,16 @@ const SubmitForm = ({ imageBlob = undefined }) => {
 							Select on Map
 						</button>
 					</div>
-					<div>
-						{showSelectionMap && (
-							<MapWrapper
+					{showSelectionMap && (
+						<div className='mapDiv'>
+							<Map
 								Component={SelectionMap}
 								center={currentPosition}
+								setMapLocation={setMapLocation}
 								close={setShowSelectionMap}
 							/>
-						)}
-					</div>
+						</div>
+					)}
 				</div>
 				<div className="form-control upload">
 					<label htmlFor="stoopupload">
