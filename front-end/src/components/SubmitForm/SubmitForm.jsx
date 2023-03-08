@@ -66,8 +66,6 @@ const SubmitForm = ({ imageBlob = undefined }) => {
 		return () => URL.revokeObjectURL(objectUrl)
 	}, [selectedFile])
 
-	// change css to input-success once they have been filled out
-
 	return (
 		<div className='prose'>
 			<h1>New Stoop Upload Form</h1>
