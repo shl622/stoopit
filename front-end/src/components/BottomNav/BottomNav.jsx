@@ -19,11 +19,10 @@ export default function BottomNav() {
 		}
 
 		const imageBlob = input.files[0]
-		const imageSrc = URL.createObjectURL(imageBlob)
 
 		navigate('/upload', {
 			state: {
-				imageSrc
+				imageBlob
 			}
 		})
 		setDisabled(false)

@@ -1,13 +1,13 @@
-// import { useLocation } from 'react-router-dom'
+import { useLocation } from 'react-router-dom'
+import SubmitForm from '../../components/SubmitForm/SubmitForm'
 
 export default function UploadPage() {
-	// const location = useLocation()
-	// const imageSrc = location.state?.imageSrc
+	const location = useLocation()
+	const imageBlob = location.state?.imageBlob
 
 	return (
 		<>
-			{/* TODO: Kai will replace */}
-			{/* <SubmitForm imageSrc={imageSrc} /> */}
+			<SubmitForm imageBlob={imageBlob} />
 		</>
 	)
 }
