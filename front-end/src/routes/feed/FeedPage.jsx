@@ -1,8 +1,13 @@
 import { Stoops } from '../../mockdata/db'
 import Card from '../../components/Card/Card'
-
+import TopNav from '../../components/TopNav/TopNav'
 const FeedPage = () => {
 	// TODO: Fetch from api
+	const currentPosition = {
+		lat: 40.7128,
+		lng: -74.006
+	}
+
 	const stoopsList = Stoops.map((stoop) => {
 		return (
 			<Card
@@ -17,7 +22,13 @@ const FeedPage = () => {
 		)
 	})
 
-	return <div>{stoopsList}</div>
+	return (
+		<>
+			<TopNav currentPosition={currentPosition} stoops={Stoops} />
+
+			<div>{stoopsList}</div>
+		</>
+	)
 }
 
 export default FeedPage
