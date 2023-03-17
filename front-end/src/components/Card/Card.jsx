@@ -8,7 +8,6 @@ function Card(props) {
 	const { id, description, title, image } = props
 	const navigate = useNavigate()
 
-	console.log('Card ID:', id)
 	return (
 		<>
 			<div className="card card-compact card-layout">
