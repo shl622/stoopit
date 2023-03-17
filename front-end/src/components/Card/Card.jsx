@@ -15,7 +15,9 @@ function Card(props) {
 						<h2 className="stoop-title">{title}</h2>
 						<p className="stoop-text">{description}</p>
 					</div>
-					<MapIcon className="card-map-icon" />
+					<button className="map-button">
+						<MapIcon className="card-map-icon" />
+					</button>
 				</div>
 			</div>
 		</>
