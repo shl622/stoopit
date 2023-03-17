@@ -1,8 +1,7 @@
 .top-nav {
 	display: flex;
-	justify-content: center;
+	justify-content: space-between;
 	align-items: center;
-	flex-direction: column;
 	padding: 1rem;
 	height: 5rem;
 }
@@ -11,8 +10,8 @@
 	display: flex;
 	padding: 0.5rem 1rem;
 	margin-right: 0.5rem;
-	background-color: #4caf50;
-	color: white;
+	background-color: var(--secondary);
+	color: black;
 	border: none;
 	cursor: pointer;
 	transition: background-color 0.3s;
