@@ -1,9 +1,14 @@
 import './Card.css'
 import MapIcon from '../Icons/MapIcon'
+import { useNavigate } from 'react-router-dom'
+// import { useParams } from 'react-router-dom'
 
 // return a card with a title, a body and a picture as a component
 function Card(props) {
-	const { description, title, image } = props
+	const { id, description, title, image } = props
+	const navigate = useNavigate()
+
+	console.log('Card ID:', id)
 	return (
 		<>
 			<div className="card card-compact card-layout">
@@ -15,7 +20,10 @@ function Card(props) {
 						<h2 className="stoop-title">{title}</h2>
 						<p className="stoop-text">{description}</p>
 					</div>
-					<button className="map-button">
+					<button
+						className="map-button"
+						onClick={() => navigate(`/map/${id}`)}
+					>
 						<MapIcon className="card-map-icon" />
 					</button>
 				</div>

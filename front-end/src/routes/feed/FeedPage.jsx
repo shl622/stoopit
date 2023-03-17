@@ -7,6 +7,7 @@ const FeedPage = () => {
 		return (
 			<Card
 				key={stoop.id}
+				id={stoop.id}
 				image={stoop.image}
 				title={stoop.title}
 				date={stoop.date}
