@@ -1,6 +1,7 @@
 // this is the custom Hook
 
 import { useState, useEffect } from 'react'
+
 export const useLocationHook = () => {
 	const [position, setPosition] = useState({})
 	const [error, setError] = useState(null)
@@ -13,6 +14,8 @@ export const useLocationHook = () => {
 	}
 	const onError = (error) => {
 		setError(error.message)
+		//if error set default location to wsp
+		setPosition({ lat: 40.7309, lng: -73.9973 })
 	}
 	useEffect(() => {
 		const geo = navigator.geolocation
@@ -20,8 +23,9 @@ export const useLocationHook = () => {
 			setError('Geolocation is not supported')
 			return
 		}
+		geo.getCurrentPosition(onChange, onError)
 		const watcher = geo.watchPosition(onChange, onError)
 		return () => geo.clearWatch(watcher)
 	}, [])
-	return { ...position, error }
+	return { ...position, setPosition, error }
 }

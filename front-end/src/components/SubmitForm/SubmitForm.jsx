@@ -1,17 +1,19 @@
 import './SubmitForm.css'
 
 import { useForm } from 'react-hook-form'
-import { useState, useEffect } from 'react'
-import { useLocationHook } from '../../hooks/useLocationHook'
+import { useState, useEffect, useContext } from 'react'
+// import { useLocationHook } from '../../hooks/useLocationHook'
 import SelectionMap from '../Maps/MapSelection/MapSelection'
 import ImgIcon from '../Icons/Img'
 import Map from '../../containers/MapWrapper'
+import mapContext from '../../context/map'
 
 const SubmitForm = ({ imageBlob = undefined }) => {
 	const [selectedFile] = useState(imageBlob)
 	const [preview, setPreview] = useState()
 	const [showSelectionMap, setShowSelectionMap] = useState(false)
-	const currentPosition = useLocationHook()
+	// const currentPosition = useLocationHook()
+	const {currentPosition} = useContext(mapContext)
 	const {
 		register,
 		handleSubmit,

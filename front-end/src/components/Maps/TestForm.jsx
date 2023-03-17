@@ -1,12 +1,12 @@
 import './map.css'
 import MapWrapper from '../../containers/MapWrapper'
 import SelectionMap from './SelectionMap'
-import useLocation from '../../hooks/useLocationHook'
-import { useState } from 'react'
+import { useContext, useState } from 'react'
+import mapContext from '../../context/map'
 
 export default function TestForm() {
 	const [showSelectionMap, setShowSelectionMap] = useState(false)
-	const currentPosition = useLocation()
+	const {currentPosition} = useContext(mapContext)
 
 	function handleShowSelectionMap() {
 		setShowSelectionMap(true)
