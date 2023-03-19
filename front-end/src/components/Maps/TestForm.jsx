@@ -6,7 +6,7 @@ import mapContext from '../../context/map'
 
 export default function TestForm() {
 	const [showSelectionMap, setShowSelectionMap] = useState(false)
-	const {currentPosition} = useContext(mapContext)
+	const { currentPosition } = useContext(mapContext)
 
 	function handleShowSelectionMap() {
 		setShowSelectionMap(true)

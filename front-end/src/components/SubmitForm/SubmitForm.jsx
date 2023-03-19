@@ -13,7 +13,7 @@ const SubmitForm = ({ imageBlob = undefined }) => {
 	const [preview, setPreview] = useState()
 	const [showSelectionMap, setShowSelectionMap] = useState(false)
 	// const currentPosition = useLocationHook()
-	const {currentPosition} = useContext(mapContext)
+	const { currentPosition } = useContext(mapContext)
 	const {
 		register,
 		handleSubmit,

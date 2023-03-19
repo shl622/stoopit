@@ -11,27 +11,34 @@ import { MapProvider } from '../../context/map'
 // import SubmitForm from '../../components/SubmitForm/SubmitForm'
 
 const App = () => {
-	const {lat,lng,setPosition,error} = useLocationHook()
-	const currentPosition = {lat,lng}
+	const { lat, lng, setPosition, error } = useLocationHook()
+	const currentPosition = { lat, lng }
 	useEffect(() => {
 		themeChange(false)
 	}, [])
 
 	return (
-		<MapProvider value={{
-			currentPosition,
-			setPosition,
-			error
-		}}>
+		<MapProvider
+			value={{
+				currentPosition,
+				setPosition,
+				error
+			}}
+		>
 			<div className="app">
 				<main>
 					<Routes>
-						<Route path="/" element={<Navigate to="/feed" replace />} />
+						<Route
+							path="/"
+							element={<Navigate to="/feed" replace />}
+						/>
 						<Route path="/feed" element={<FeedPage />} />
 						<Route path="/upload" element={<UploadPage />} />
 						<Route
 							path="/map"
-							element={<MapPage currentPosition={currentPosition} />}
+							element={
+								<MapPage currentPosition={currentPosition} />
+							}
 						/>
 					</Routes>
 				</main>
