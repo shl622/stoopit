@@ -40,36 +40,24 @@ const TopNav = ({ currentPosition, stoops }) => {
 		updateStoopsWithinRange()
 	}, [selectedRange])
 
+	function handleRangeChange(e) {
+		setSelectedRange(e.target.value)
+	}
+
 	return (
 		<nav className="top-nav">
 			<div className="stoops-count">
 				<p>
-					{stoopsWithinRange} stoops within {selectedRange} miles
+					{stoopsWithinRange} stoops within{' '}
+					<input
+						type="number"
+						value={selectedRange}
+						min="0"
+						onChange={handleRangeChange}
+						style={{ width: '50px' }}
+					/>{' '}
+					miles
 				</p>
-			</div>
-			<div className="range-container">
-				<button onClick={() => setSelectedRange(2)}>
-					Change Range
-				</button>
-				<svg
-					xmlns="http://www.w3.org/2000/svg"
-					fill="none"
-					viewBox="0 0 24 24"
-					strokeWidth={1.5}
-					stroke="currentColor"
-					className="w-6 h-6"
-				>
-					<path
-						strokeLinecap="round"
-						strokeLinejoin="round"
-						d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0z"
-					/>
-					<path
-						strokeLinecap="round"
-						strokeLinejoin="round"
-						d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z"
-					/>
-				</svg>
 			</div>
 		</nav>
 	)
