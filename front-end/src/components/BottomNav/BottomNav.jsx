@@ -3,25 +3,14 @@ import HomeIcon from '../Icons/HomeIcon'
 import CameraIcon from '../Icons/CameraIcon'
 import MapIcon from '../Icons/MapIcon'
 import { useNavigate } from 'react-router-dom'
-import { useState,useEffect } from 'react'
+import { useState } from 'react'
 
 export default function BottomNav() {
 	const navigate = useNavigate()
 	const [disabled, setDisabled] = useState(false)
-	const [image, setImage] = useState(null)
-	useEffect(()=>{
-		if (image){
-			navigate('/upload', {
-				state: {
-					imageBlob:image
-				}
-			})
-		}
-		console.log(image)
-	},[image])
+
 	const handleUploadClick = (e) => {
 		setDisabled(true)
-		setImage(null)
 		const input = e.target
 		if (!input.files || input.files.length < 1) {
 			console.error('Failed to capture image')
@@ -30,8 +19,12 @@ export default function BottomNav() {
 		}
 
 		const imageBlob = input.files[0]
-		setImage(imageBlob)
-		
+
+		navigate('/upload', {
+			state: {
+				imageBlob
+			}
+		})
 		setDisabled(false)
 	}
 
