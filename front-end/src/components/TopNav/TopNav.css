@@ -21,3 +21,30 @@
 	font-size: 1rem;
 	font-weight: bold;
 }
+
+.input-range {
+	-webkit-appearance: textfield;
+	-moz-appearance: textfield;
+	appearance: textfield;
+}
+
+.input-range::-webkit-inner-spin-button,
+.input-range::-webkit-outer-spin-button {
+	-webkit-appearance: none;
+	appearance: none;
+	margin: 0;
+}
+
+.range-buttons {
+	display: inline-flex;
+	flex-direction: row;
+	align-items: center;
+	position: relative;
+	margin-left: 5px;
+}
+
+.range-buttons button {
+	padding: 2px;
+	font-size: 10px;
+	margin-right: 2px;
+}

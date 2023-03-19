@@ -54,11 +54,24 @@ const TopNav = ({ currentPosition, stoops }) => {
 						value={selectedRange}
 						min="0"
 						onChange={handleRangeChange}
-						style={{ width: '50px' }}
+						className="input-range"
+						style={{ width: '15px' }}
 					/>{' '}
 					miles
+					<div className="range-buttons">
+						<button
+							onClick={() => setSelectedRange(+selectedRange + 1)}
+						>
+							+
+						</button>{' '}
+						<button
+							onClick={() => setSelectedRange(+selectedRange - 1)}
+						>
+							-
+						</button>
+					</div>
 				</p>
-			</div>
+			</div>{' '}
 		</nav>
 	)
 }

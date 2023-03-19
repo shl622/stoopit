@@ -1,6 +1,7 @@
 import './Card.css'
 import MapIcon from '../Icons/MapIcon'
 import { useNavigate } from 'react-router-dom'
+// import { calculateDistance } from '../TopNav/TopNav'
 // import { useParams } from 'react-router-dom'
 
 // return a card with a title, a body and a picture as a component
