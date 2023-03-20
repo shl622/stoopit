@@ -5,7 +5,7 @@ import { useState, useEffect, useContext } from 'react'
 // import { useLocationHook } from '../../hooks/useLocationHook'
 import SelectionMap from '../Maps/MapSelection/MapSelection'
 import ImgIcon from '../Icons/Img'
-import Map from '../../containers/MapWrapper'
+import MapWrapper from '../../containers/MapWrapper'
 import mapContext from '../../context/map'
 
 const SubmitForm = ({ imageBlob = undefined }) => {
@@ -69,8 +69,8 @@ const SubmitForm = ({ imageBlob = undefined }) => {
 	}, [selectedFile])
 
 	return (
-		<div className="prose">
-			<h1>New Stoop Upload Form</h1>
+		<div>
+			<h1>New Stoop Upload</h1>
 			<form className="form-wrapper" onSubmit={handleSubmit(onSubmit)}>
 				<div className="form-control">
 					<label
@@ -92,7 +92,7 @@ const SubmitForm = ({ imageBlob = undefined }) => {
 						<span>Title</span>
 						<input
 							id="stooptitle"
-							className="input input-bordered"
+							className="input input-primary"
 							type="text"
 							name="title"
 							{...register('title', {
@@ -112,7 +112,7 @@ const SubmitForm = ({ imageBlob = undefined }) => {
 						<span>Description</span>
 						<input
 							id="stoopdesc"
-							className="input input-bordered"
+							className="input input-primary"
 							type="textarea"
 							name="description"
 							{...register('description', {
@@ -169,7 +169,7 @@ const SubmitForm = ({ imageBlob = undefined }) => {
 					</div>
 					{showSelectionMap && (
 						<div className="mapDiv">
-							<Map
+							<MapWrapper
 								Component={SelectionMap}
 								center={currentPosition}
 								setMapLocation={setMapLocation}

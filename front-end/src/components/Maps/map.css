@@ -1,6 +1,7 @@
 .fullMap {
-	width: 100vw;
-	height: 100vh;
+	/* Subtract height of BottomNav */
+	width: 100svw;
+	height: calc(100svh - 4rem);
 }
 
 .infowindow div {
