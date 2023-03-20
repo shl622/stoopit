@@ -16,7 +16,8 @@ const FeedPage = () => {
 				image={stoop.image}
 				title={stoop.title}
 				date={stoop.date}
-				locationName={stoop.locationName}
+				lat={stoop.location.lat}
+				lng={stoop.location.lng}
 				description={stoop.description}
 			/>
 		)
