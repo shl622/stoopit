@@ -45,33 +45,23 @@ const TopNav = ({ currentPosition, stoops }) => {
 	}
 
 	return (
-		<nav className="top-nav">
+		<nav className="top-nav flex">
 			<div className="stoops-count">
 				<p>
-					{stoopsWithinRange} stoops within{' '}
-					<input
-						type="number"
-						value={selectedRange}
-						min="0"
-						onChange={handleRangeChange}
-						className="input-range"
-						style={{ width: '15px' }}
-					/>{' '}
-					miles
-					<div className="range-buttons">
-						<button
-							onClick={() => setSelectedRange(+selectedRange + 1)}
-						>
-							+
-						</button>{' '}
-						<button
-							onClick={() => setSelectedRange(+selectedRange - 1)}
-						>
-							-
-						</button>
-					</div>
+					{stoopsWithinRange} stoops within {selectedRange} miles
 				</p>
-			</div>{' '}
+			</div>
+			<div className="slider-container">
+				<input
+					type="range"
+					min="0"
+					max="10"
+					step="0.5"
+					value={selectedRange}
+					onChange={handleRangeChange}
+					className="range"
+				/>
+			</div>
 		</nav>
 	)
 }
