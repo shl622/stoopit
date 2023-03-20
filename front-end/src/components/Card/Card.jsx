@@ -1,9 +1,25 @@
 import './Card.css'
 import MapIcon from '../Icons/MapIcon'
+import { useNavigate } from 'react-router-dom'
+import { calculateDistance } from '../../utils/map'
 
 // return a card with a title, a body and a picture as a component
 function Card(props) {
-	const { description, title, image } = props
+	const { id, description, title, image, lat, lng } = props
+	const navigate = useNavigate()
+	const currentPosition = {
+		lat: 40.7128,
+		lng: -74.006
+	}
+
+	// calculate distance between current position and stoop location
+	const distance = calculateDistance(
+		lat,
+		lng,
+		currentPosition.lat,
+		currentPosition.lng
+	)
+
 	return (
 		<>
 			<div className="card card-compact card-layout">
@@ -13,9 +29,18 @@ function Card(props) {
 				<div className="card-body card-text-icon-body">
 					<div className="text-stack">
 						<h2 className="stoop-title">{title}</h2>
+
 						<p className="stoop-text">{description}</p>
 					</div>
-					<MapIcon className="card-map-icon" />
+					<div className="map-button">
+						<button onClick={() => navigate(`/map/${id}`)}>
+							<MapIcon className="card-map-icon" />
+						</button>
+						<p className="distance">
+							{' '}
+							{distance.toFixed(2)} miles{' '}
+						</p>
+					</div>
 				</div>
 			</div>
 		</>

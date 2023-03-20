@@ -1,12 +1,10 @@
-.app {
+.top-nav {
 	width: 100vw;
 	height: 100vh;
 	display: flex;
 	align-items: center;
 	justify-content: center;
 	flex-direction: column;
-}
-
-.app > main {
-	height: 100%;
+	background-color: var(--primary);
+	color: black;
 }
