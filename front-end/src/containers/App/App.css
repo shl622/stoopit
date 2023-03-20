@@ -1,10 +1,13 @@
-.top-nav {
-	width: 100vw;
-	height: 100vh;
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	flex-direction: column;
-	background-color: var(--primary);
+.app {
+	background-color: var(--base-100);
 	color: black;
+}
+
+.app > main {
+	padding-bottom: 4rem;
+	height: 100%;
+}
+
+.app > main:has(#map) {
+	padding-bottom: 0;
 }

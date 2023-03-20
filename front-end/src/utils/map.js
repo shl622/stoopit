@@ -32,7 +32,7 @@ export function renderMarker({ stoop, map }) {
 	window.google.maps.event.addListener(map, 'click', function (event) {
 		infoWindow.close()
 	})
-	return marker
+	return { marker, infoWindow }
 }
 
 export function renderInitMarkers({ stoops, map }) {

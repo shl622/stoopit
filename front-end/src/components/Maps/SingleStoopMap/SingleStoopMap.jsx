@@ -32,7 +32,12 @@ export default function SingleStoopMap() {
 
 	useEffect(() => {
 		const map = initMap({ stoop, ref, center: stoop.location })
-		renderMarker({ stoop, map })
+		const { marker, infoWindow } = renderMarker({ stoop, map })
+		// Open stoop info when single stoop map is opened
+		infoWindow.open({
+			anchor: marker,
+			map
+		})
 	}, [stoop])
 	return (
 		<div

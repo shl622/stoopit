@@ -1,43 +1,46 @@
-import React, { useState, useEffect } from 'react'
 import './TopNav.css'
+import { useState, useEffect, useContext } from 'react'
 import { calculateDistance } from '../../utils/map'
+import mapContext from '../../context/map'
 
-const TopNav = ({ currentPosition, stoops }) => {
-	const [selectedRange, setSelectedRange] = useState(2)
+const TopNav = ({ stoops, selectedRange, setSelectedRange }) => {
+	const { currentPosition } = useContext(mapContext)
 	const [stoopsWithinRange, setStoopsWithinRange] = useState(0)
 
-	function updateStoopsWithinRange() {
-		let count = 0
-		stoops.forEach((stoop) => {
-			const distance = calculateDistance(
-				currentPosition.lat,
-				currentPosition.lng,
-				stoop.location.lat,
-				stoop.location.lng
-			)
-			if (distance <= selectedRange) {
-				count++
-			}
-		})
-		setStoopsWithinRange(count)
-	}
-
 	useEffect(() => {
+		function updateStoopsWithinRange() {
+			let count = 0
+			stoops.forEach((stoop) => {
+				const distance = calculateDistance(
+					currentPosition.lat,
+					currentPosition.lng,
+					stoop.location.lat,
+					stoop.location.lng
+				)
+				if (distance <= selectedRange) {
+					count++
+				}
+			})
+			setStoopsWithinRange(count)
+		}
 		updateStoopsWithinRange()
-	}, [selectedRange])
+	}, [selectedRange, currentPosition, stoops])
 
 	function handleRangeChange(e) {
 		setSelectedRange(e.target.value)
 	}
 
 	return (
-		<nav className="top-nav flex">
+		<nav className="navbar top-nav">
 			<div className="stoops-count">
 				<p>
-					{stoopsWithinRange} stoops within {selectedRange} miles
+					{stoopsWithinRange} Stoop
+					{Number(stoopsWithinRange) !== 1 && 's'} Within{' '}
+					{selectedRange} Mile{Number(selectedRange) !== 1 && 's'}
 				</p>
 			</div>
 			<div className="slider-container">
+				0
 				<input
 					type="range"
 					min="0"
@@ -47,10 +50,10 @@ const TopNav = ({ currentPosition, stoops }) => {
 					onChange={handleRangeChange}
 					className="range"
 				/>
+				10
 			</div>
 		</nav>
 	)
 }
 
 export default TopNav
-

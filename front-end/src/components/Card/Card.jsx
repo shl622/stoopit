@@ -24,22 +24,24 @@ function Card(props) {
 		<>
 			<div className="card card-compact card-layout">
 				<figure>
-					<img className="img" src={image} alt="stoop" />
+					<img src={image} alt="stoop" />
 				</figure>
-				<div className="card-body card-text-icon-body">
+				<div className="card-body card-body-layout">
 					<div className="text-stack">
-						<h2 className="stoop-title">{title}</h2>
+						<h2 className="card-title">{title}</h2>
 
 						<p className="stoop-text">{description}</p>
 					</div>
-					<div className="map-button">
-						<button onClick={() => navigate(`/map/${id}`)}>
+					<div className="card-actions justify-end">
+						<button
+							className="map-button"
+							onClick={() => navigate(`/map/${id}`)}
+						>
 							<MapIcon className="card-map-icon" />
+							<p className="distance">
+								{distance.toFixed(2)} miles
+							</p>
 						</button>
-						<p className="distance">
-							{' '}
-							{distance.toFixed(2)} miles{' '}
-						</p>
 					</div>
 				</div>
 			</div>
