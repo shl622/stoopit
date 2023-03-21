@@ -20,6 +20,7 @@ function Card(props) {
 		currentPosition.lng
 	)
 
+	// return a card with a title, a body and a picture
 	return (
 		<>
 			<div className="card card-compact card-layout">
