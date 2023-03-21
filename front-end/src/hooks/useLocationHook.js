@@ -14,7 +14,7 @@ export const useLocationHook = () => {
 	}
 	const onError = (error) => {
 		setError(error.message)
-		//if error set default location to wsp
+		//if error set default location to ws
 		setPosition({ lat: 40.7309, lng: -73.9973 })
 	}
 	useEffect(() => {
