@@ -8,6 +8,7 @@ import FeedPage from '../../routes/feed/FeedPage'
 import BottomNav from '../../components/BottomNav/BottomNav'
 import UploadPage from '../../routes/upload/UploadPage'
 import StoopMapPage from '../../routes/map/[id]/StoopMapPage'
+import Toast from '../../components/Toast/Toast'
 import { MapProvider } from '../../context/map'
 
 const App = () => {
@@ -26,6 +27,10 @@ const App = () => {
 			}}
 		>
 			<div className="app">
+				<Toast
+					show={error}
+					toastMessage="Please Allow Location Services"
+				/>
 				<main>
 					<Routes>
 						<Route

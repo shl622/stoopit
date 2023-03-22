@@ -1,0 +1,9 @@
+.toast {
+	background-color: --info;
+	padding-top: 5rem;
+	z-index: 1000;
+}
+
+.toast.show {
+	transform: translateX(0px);
+}
