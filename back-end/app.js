@@ -2,7 +2,7 @@
 const express = require('express')
 const app = express()
 const path = require('path')
-const port = 3000
+const port = 8080
 
 // listen on port 3000
 const listener = app.listen(port, () => {
