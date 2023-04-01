@@ -1,3 +1,5 @@
+const { randomDateInRange, randomFloatInRange } = require('../utils/random')
+
 const generateMockStoops = () =>
 	Array(200)
 		.fill()
@@ -22,16 +24,6 @@ const generateMockStoops = () =>
 				description: 'Blue sofa, in moderate condition, needs cleaning.'
 			}
 		})
-
-const randomDateInRange = (start, end) => {
-	return new Date(
-		start.getTime() + Math.random() * (end.getTime() - start.getTime())
-	)
-}
-
-const randomFloatInRange = (min, max) => {
-	return parseFloat(Math.random() * (max - min) + min)
-}
 
 module.exports = {
 	stoopDatabase: generateMockStoops()
