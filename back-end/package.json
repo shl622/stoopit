@@ -4,15 +4,17 @@
 	"description": "",
 	"main": "app.js",
 	"scripts": {
-		"test": "mocha tests/**/*.js",
-		"start": "nodemon app.js"
+		"test": "mocha tests/**/*.js --exit",
+		"start": "nodemon app.js",
+		"coverage": "nyc npm run test"
 	},
 	"author": "",
 	"license": "ISC",
 	"devDependencies": {
 		"chai": "^4.3.7",
 		"mocha": "^10.2.0",
-		"nodemon": "^2.0.22"
+		"nodemon": "^2.0.22",
+		"nyc": "^15.1.0"
 	},
 	"dependencies": {
 		"chai-http": "^4.3.0",

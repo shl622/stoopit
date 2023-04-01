@@ -31,6 +31,7 @@ app.get('/api/stoops', (req, res) => {
 		res.status(400).json({
 			error: 'Request must have `lat`, `lng`, and `range` query parameters.'
 		})
+		return
 	}
 
 	const queryLat = parseFloat(query.lat)
