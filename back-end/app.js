@@ -6,9 +6,11 @@ const cors = require('cors')
 
 const app = express()
 const port = 8080
+const cors = require('cors')
 
 const { stoopDatabase } = require('./mockData/stoopDatabase.js')
 const { calculateDistance } = require('./utils/distance.js')
+
 
 // override default cors policy
 const corsOptions = {
@@ -17,6 +19,7 @@ const corsOptions = {
 }
 
 app.use(cors(corsOptions))
+
 // listen on port 8080
 const listener = app.listen(port, () => {
 	console.log(`Listening on port ${listener.address().port}`)
@@ -38,6 +41,7 @@ const close = () => {
 // Serve static files from the build folder
 // app.use(express.static(path.join(__dirname, '../front-end/build')))
 // app.get('/', (req, res) => {
+
 // 	res.sendFile(path.join(__dirname, '../front-end/build/index.html'))
 // })
 
@@ -52,6 +56,7 @@ app.get('/api/stoops', (req, res) => {
 		res.status(400).json({
 			error: 'Request must have `lat`, `lng`, and `range` query parameters.'
 		})
+		return
 	}
 
 	const queryLat = parseFloat(query.lat)

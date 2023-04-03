@@ -4,17 +4,29 @@
 	"description": "",
 	"main": "app.js",
 	"scripts": {
-		"test": "echo \"Error: no test specified\" && exit 1",
-		"start": "nodemon app.js"
+		"test": "mocha tests/**/*.js --exit",
+		"start": "nodemon --ignore .json app.js",
+		"coverage": "nyc npm run test"
+	},
+	"nodemonConfig": {
+		"ignore": [
+			"**/test/**",
+			"**/docs/**",
+			".json"
+		]
 	},
 	"author": "",
 	"license": "ISC",
 	"devDependencies": {
-		"nodemon": "^2.0.22"
+		"chai": "^4.3.7",
+		"mocha": "^10.2.0",
+		"nodemon": "^2.0.22",
+		"nyc": "^15.1.0"
 	},
 	"dependencies": {
 		"cors": "^2.8.5",
 		"express": "^4.18.2",
 		"express-fileupload": "^1.4.0"
+		"chai-http": "^4.3.0",
 	}
 }
