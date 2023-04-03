@@ -3,6 +3,8 @@ import MapIcon from '../Icons/MapIcon'
 import { useNavigate } from 'react-router-dom'
 import { calculateDistance } from '../../utils/map'
 import { DateTime } from 'luxon'
+import { useContext } from 'react'
+import mapContext from '../../context/map'
 
 // return a card with a title, a body and a picture as a component
 function Card(props) {

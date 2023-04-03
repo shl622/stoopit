@@ -7,11 +7,13 @@ import SelectionMap from '../Maps/MapSelection/MapSelection'
 import ImgIcon from '../Icons/Img'
 import MapWrapper from '../../containers/MapWrapper'
 import mapContext from '../../context/map'
+import { useNavigate } from 'react-router-dom'
 
 const SubmitForm = ({ imageBlob = undefined }) => {
 	const [selectedFile] = useState(imageBlob)
 	const [preview, setPreview] = useState()
 	const [showSelectionMap, setShowSelectionMap] = useState(false)
+	const navigate = useNavigate()
 	// const currentPosition = useLocationHook()
 	const { currentPosition } = useContext(mapContext)
 	const {
@@ -47,8 +49,8 @@ const SubmitForm = ({ imageBlob = undefined }) => {
 		}
 		fetch('http://localhost:8080/api/stoop', {
 			method: 'POST',
-			body: formData,
-		}).then((res) => console.log(res))
+			body: formData
+		}).then((res) => navigate('/feed'))
 	}
 
 	const setMapLocation = (location) => {
