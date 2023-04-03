@@ -128,3 +128,6 @@ typings/
 ## Jekyll artifacts
 **/.jekyll-cache
 **/_site/
+
+## Results of image uploads
+back-end/uploads
