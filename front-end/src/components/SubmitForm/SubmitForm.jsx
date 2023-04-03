@@ -40,16 +40,17 @@ const SubmitForm = ({ imageBlob = undefined }) => {
 	}, [])
 
 	const onSubmit = (data) => {
-		data.image = selectedFile
+		const formData = new FormData()
 		console.log(data)
-
-		// FOR BACKEND
-		// const res = await fetch('SOMETHING', {
-		// 	method: 'POST',
-		// 	body: formData,
-		// 	}).then((res) => res.json());
-		// console.log(res);
-		// alert(JSON.stringify(`${res.message}, status: ${res.status}`));
+		formData.append('file', selectedFile)
+		for (const key of Object.keys(data)) {
+			formData.append(`${key}`, data[key])
+		}
+		console.log(formData)
+		fetch('http://localhost:8080/api/stoop', {
+			method: 'POST',
+			body: formData,
+		}).then((res) => console.log(res))
 	}
 
 	const setMapLocation = (location) => {
