@@ -6,7 +6,6 @@ const cors = require('cors')
 
 const app = express()
 const port = 8080
-const cors = require('cors')
 
 const { stoopDatabase } = require('./mockData/stoopDatabase.js')
 const { calculateDistance } = require('./utils/distance.js')
