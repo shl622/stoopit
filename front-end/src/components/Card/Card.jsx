@@ -3,15 +3,14 @@ import MapIcon from '../Icons/MapIcon'
 import { useNavigate } from 'react-router-dom'
 import { calculateDistance } from '../../utils/map'
 import { DateTime } from 'luxon'
+import { useContext } from 'react'
+import mapContext from '../../context/map'
 
 // return a card with a title, a body and a picture as a component
 function Card(props) {
 	const { id, description, title, image, lat, lng, timestamp } = props
 	const navigate = useNavigate()
-	const currentPosition = {
-		lat: 40.7128,
-		lng: -74.006
-	}
+	const { currentPosition } = useContext(mapContext)
 
 	// calculate distance between current position and stoop location
 	const distance = calculateDistance(
