@@ -2,10 +2,11 @@ import './Card.css'
 import MapIcon from '../Icons/MapIcon'
 import { useNavigate } from 'react-router-dom'
 import { calculateDistance } from '../../utils/map'
+import { DateTime } from 'luxon'
 
 // return a card with a title, a body and a picture as a component
 function Card(props) {
-	const { id, description, title, image, lat, lng } = props
+	const { id, description, title, image, lat, lng, timestamp } = props
 	const navigate = useNavigate()
 	const currentPosition = {
 		lat: 40.7128,
@@ -34,15 +35,24 @@ function Card(props) {
 						<p className="stoop-text">{description}</p>
 					</div>
 					<div className="card-actions justify-end">
-						<button
-							className="map-button"
-							onClick={() => navigate(`/map/${id}`)}
-						>
-							<MapIcon className="card-map-icon" />
-							<p className="distance">
-								{distance.toFixed(2)} miles
+						<div className="text-stack">
+							<p>
+								{DateTime.fromMillis(
+									parseInt(timestamp)
+								).toRelative()}
 							</p>
-						</button>
+							<div>
+								<button
+									className="map-button"
+									onClick={() => navigate(`/map/${id}`)}
+								>
+									<MapIcon className="card-map-icon" />
+									<p className="distance">
+										{distance.toFixed(2)} miles
+									</p>
+								</button>
+							</div>
+						</div>
 					</div>
 				</div>
 			</div>
