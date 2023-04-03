@@ -41,12 +41,10 @@ const SubmitForm = ({ imageBlob = undefined }) => {
 
 	const onSubmit = (data) => {
 		const formData = new FormData()
-		console.log(data)
 		formData.append('file', selectedFile)
 		for (const key of Object.keys(data)) {
 			formData.append(`${key}`, data[key])
 		}
-		console.log(formData)
 		fetch('http://localhost:8080/api/stoop', {
 			method: 'POST',
 			body: formData,
