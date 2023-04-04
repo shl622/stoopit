@@ -63,6 +63,7 @@ const FeedPage = () => {
 						// Show card only if it is within selectedRange
 						return distanceToStoop <= selectedRange ? (
 							<Card
+								distanceToStoop={distanceToStoop}
 								key={stoop.id}
 								id={stoop.id}
 								image={stoop.image}
