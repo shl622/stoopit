@@ -10,7 +10,6 @@ const port = 8080
 const { stoopDatabase } = require('./mockData/stoopDatabase.js')
 const { calculateDistance } = require('./utils/distance.js')
 
-
 // override default cors policy
 const corsOptions = {
 	origin: '*',
@@ -26,11 +25,9 @@ const listener = app.listen(port, () => {
 
 app.use(
 	fileupload({
-	  createParentPath: true,
+		createParentPath: true
 	})
-  );
-
-
+)
 
 // close port
 const close = () => {
@@ -38,11 +35,7 @@ const close = () => {
 }
 
 // Serve static files from the build folder
-// app.use(express.static(path.join(__dirname, '../front-end/build')))
-// app.get('/', (req, res) => {
-
-// 	res.sendFile(path.join(__dirname, '../front-end/build/index.html'))
-// })
+app.use('/uploads', express.static(__dirname + '/uploads'))
 
 app.use(express.json()) // decode JSON-formatted incoming POST data
 app.use(express.urlencoded({ extended: true })) // decode url-encoded incoming POST data
@@ -87,27 +80,29 @@ app.post('/api/stoop', (req, res) => {
 	// console.log(stoopDatabase.length)
 
 	// get location as array of numbers
-	const location = req.body.location.replaceAll(' ', '').split(',');
+	const location = req.body.location.replaceAll(' ', '').split(',')
 	try {
 		// error if no image file
 		if (!req.files) {
 			res.send({
 				status: 'failed',
-				message: 'No file',
-			});
+				message: 'No file'
+			})
 		} else {
-			let file = req.files.file;
-			let filePath = ('./uploads/' + Date.now() + file.name.replaceAll(' ', ''));
-			file.mv(filePath);
+			let file = req.files.file
+			let filename = Date.now() + file.name.replaceAll(' ', '')
+			let filePath = 'http://localhost:8080/uploads/' + filename
+
+			file.mv(__dirname + '/uploads/' + filename)
 			res.send({
 				status: 'success',
 				message: 'File successfully uploaded',
 				data: {
 					name: file.name,
 					mimetype: file.mimetype,
-					size: file.size,
-				},
-			});
+					size: file.size
+				}
+			})
 			stoopDatabase.push({
 				id: +(Date.now() + Math.floor(Math.random() * 10).toString()),
 				location: {
@@ -118,10 +113,10 @@ app.post('/api/stoop', (req, res) => {
 				timestamp: Date.now(),
 				image: filePath,
 				description: req.body.description
-			}) 
+			})
 		}
 	} catch (err) {
-		res.status(500).send(err);
+		res.status(500).send(err)
 	}
 
 	// show difference in database length
