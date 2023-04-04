@@ -24,9 +24,10 @@
 		"nyc": "^15.1.0"
 	},
 	"dependencies": {
+		"chai-datetime": "^1.8.0",
+		"chai-http": "^4.3.0",
 		"cors": "^2.8.5",
 		"express": "^4.18.2",
-		"express-fileupload": "^1.4.0",
-		"chai-http": "^4.3.0"
+		"express-fileupload": "^1.4.0"
 	}
 }
