@@ -1,4 +1,5 @@
 import './SubmitForm.css'
+import { getLocationFromExifData } from '../../utils/map'
 
 import { useForm } from 'react-hook-form'
 import { useState, useEffect, useContext } from 'react'
@@ -25,7 +26,7 @@ const SubmitForm = ({ imageBlob = undefined }) => {
 		defaultValues: {
 			title: '',
 			description: '',
-			location: ''
+			location: getLocationFromExifData(selectedFile)
 		}
 	})
 
@@ -44,6 +45,7 @@ const SubmitForm = ({ imageBlob = undefined }) => {
 	const onSubmit = (data) => {
 		const formData = new FormData()
 		formData.append('file', selectedFile)
+		putLocationFromExif(selectedFile)
 		for (const key of Object.keys(data)) {
 			formData.append(`${key}`, data[key])
 		}
@@ -68,6 +70,17 @@ const SubmitForm = ({ imageBlob = undefined }) => {
 
 		return () => URL.revokeObjectURL(objectUrl)
 	}, [selectedFile])
+
+	async function putLocationFromExif(event) {
+		try {
+			const location = await getLocationFromExifData(selectedFile)
+			console.log('Location:', location)
+			handleGeoLocation(location)
+		} catch (error) {
+			console.error('Error:', error)
+			// Handle the error, such as displaying an error message to the user.
+		}
+	}
 
 	return (
 		<div>
