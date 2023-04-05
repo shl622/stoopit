@@ -78,19 +78,17 @@ export function calculateDistance(lat1, lon1, lat2, lon2) {
 
 export function getLocationFromExifData(photoFile) {
 	return new Promise((resolve, reject) => {
+		let location = null
+
 		EXIF.getData(photoFile, function () {
 			const latRef = EXIF.getTag(this, 'GPSLatitudeRef')
 			const lat = EXIF.getTag(this, 'GPSLatitude')
 			const lngRef = EXIF.getTag(this, 'GPSLongitudeRef')
 			const lng = EXIF.getTag(this, 'GPSLongitude')
 
-			if (!lat || !lng) {
-				reject(
-					new Error(
-						'Could not extract location data from photo EXIF.'
-					)
-				)
-			}
+			console.log(latRef, lat, lngRef, lng)
+
+			if (!latRef || !lat || !lngRef || !lng) return null
 
 			const latDecimal =
 				(lat[0] + lat[1] / 60 + lat[2] / 3600) *
@@ -99,7 +97,8 @@ export function getLocationFromExifData(photoFile) {
 				(lng[0] + lng[1] / 60 + lng[2] / 3600) *
 				(lngRef === 'E' ? 1 : -1)
 
-			const location = { lat: latDecimal, lng: lngDecimal }
+			location = { lat: latDecimal, lng: lngDecimal }
+			console.log(location)
 			resolve(location)
 		})
 	})

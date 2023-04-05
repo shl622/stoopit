@@ -17,6 +17,7 @@ const SubmitForm = ({ imageBlob = undefined }) => {
 	const navigate = useNavigate()
 	// const currentPosition = useLocationHook()
 	const { currentPosition } = useContext(mapContext)
+
 	const {
 		register,
 		handleSubmit,
@@ -26,9 +27,36 @@ const SubmitForm = ({ imageBlob = undefined }) => {
 		defaultValues: {
 			title: '',
 			description: '',
-			location: getLocationFromExifData(selectedFile)
+			location: ''
 		}
 	})
+
+	// const defaultLocation = getLocationFromExifData(selectedFile)
+	// console.log(defaultLocation)
+	// useEffect(() => {
+	// 	if (defaultLocation !== undefined) {
+	// 		handleGeoLocation(defaultLocation)
+	// 	}
+	// }, [])
+
+	useEffect(() => {
+		async function fetchLocation() {
+			try {
+				const defaultLocation = await getLocationFromExifData(
+					selectedFile
+				)
+				console.log(defaultLocation)
+				handleGeoLocation(defaultLocation)
+			} catch (error) {
+				console.error('Error:', error)
+				// Handle the error, such as displaying an error message to the user.
+			}
+		}
+
+		if (selectedFile) {
+			fetchLocation()
+		}
+	}, [selectedFile])
 
 	function handleShowSelectionMap() {
 		setShowSelectionMap(!showSelectionMap)
