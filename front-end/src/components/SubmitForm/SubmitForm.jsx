@@ -89,17 +89,6 @@ const SubmitForm = ({ imageBlob = undefined }) => {
 		return () => URL.revokeObjectURL(objectUrl)
 	}, [selectedFile])
 
-	// async function putLocationFromExif(event) {
-	// 	try {
-	// 		const location = await getLocationFromExifData(selectedFile)
-	// 		console.log('Location:', location)
-	// 		handleGeoLocation(location)
-	// 	} catch (error) {
-	// 		console.error('Error:', error)
-	// 		// Handle the error, such as displaying an error message to the user.
-	// 	}
-	// }
-
 	return (
 		<div>
 			<h1>New Stoop Upload</h1>
