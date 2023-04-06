@@ -98,7 +98,6 @@ export function getLocationFromExifData(photoFile) {
 				(lngRef === 'E' ? 1 : -1)
 
 			location = { lat: latDecimal, lng: lngDecimal }
-			console.log(location)
 			resolve(location)
 		})
 	})

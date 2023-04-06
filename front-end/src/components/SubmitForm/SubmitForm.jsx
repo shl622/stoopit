@@ -36,7 +36,6 @@ const SubmitForm = ({ imageBlob = undefined }) => {
 				const defaultLocation = await getLocationFromExifData(
 					selectedFile
 				)
-				console.log(defaultLocation)
 				handleGeoLocation(defaultLocation)
 			} catch (error) {
 				console.error('Error:', error)
