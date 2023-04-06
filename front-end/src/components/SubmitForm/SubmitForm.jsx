@@ -1,4 +1,5 @@
 import './SubmitForm.css'
+import { getLocationFromExifData } from '../../utils/map'
 
 import { useForm } from 'react-hook-form'
 import { useState, useEffect, useContext } from 'react'
@@ -14,8 +15,8 @@ const SubmitForm = ({ imageBlob = undefined }) => {
 	const [preview, setPreview] = useState()
 	const [showSelectionMap, setShowSelectionMap] = useState(false)
 	const navigate = useNavigate()
-	// const currentPosition = useLocationHook()
 	const { currentPosition } = useContext(mapContext)
+
 	const {
 		register,
 		handleSubmit,
@@ -28,6 +29,24 @@ const SubmitForm = ({ imageBlob = undefined }) => {
 			location: ''
 		}
 	})
+
+	useEffect(() => {
+		async function fetchLocation() {
+			try {
+				const defaultLocation = await getLocationFromExifData(
+					selectedFile
+				)
+				handleGeoLocation(defaultLocation)
+			} catch (error) {
+				console.error('Error:', error)
+				// Handle the error, such as displaying an error message to the user.
+			}
+		}
+
+		if (selectedFile) {
+			fetchLocation()
+		}
+	}, [selectedFile])
 
 	function handleShowSelectionMap() {
 		setShowSelectionMap(!showSelectionMap)
