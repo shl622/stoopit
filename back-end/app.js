@@ -89,13 +89,6 @@ app.get('/api/stoop', (req, res) => {
 		stoop.id === queryId
 	})
 
-	if (!stoopFound) {
-		res.status(404).json({
-			error: `No stoop with id ${queryId} found.`
-		})
-		return
-	}
-
 	res.status(200).json({
 		data: stoopFound
 	})
