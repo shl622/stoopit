@@ -34,7 +34,7 @@ describe('GET /api/stoops',function(){
     it('should return 200 with a list of stoops and the length of the list with valid query', (done)=>{
         const lat = randomFloatInRange(40.5, 40.9)
         const lng = -randomFloatInRange(73.5, 74)
-        const range = randomFloatInRange(0,10)
+        const range = randomFloatInRange("0",10)
         const query = `lat=${lat}&lng=${lng}&range=${range}`
         chai.request(app)
         .get(`/api/stoops?${query}`)
@@ -53,3 +53,4 @@ describe('GET /api/stoops',function(){
         })
     })
 })
+
