@@ -42,6 +42,7 @@ app.use(express.urlencoded({ extended: true })) // decode url-encoded incoming P
 
 // TODO: extract into a router to make code cleaner
 app.get('/api/stoops', (req, res) => {
+	console.log(stoopDatabase)
 	const query = req?.query
 	// If there's no query params or lat and lng are not params
 	if (!req?.query || !(query?.lat && query?.lng && query?.range)) {

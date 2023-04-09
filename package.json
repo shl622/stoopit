@@ -1,5 +1,10 @@
 {
+<<<<<<< HEAD
   "devDependencies": {
     "sinon": "^15.0.3"
+=======
+  "dependencies": {
+    "exif-js": "^2.3.0"
+>>>>>>> 999c89ce511a80b8386a024d07dcb76a81245622
   }
 }
