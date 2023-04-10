@@ -10,6 +10,7 @@ describe('Card', () => {
 					title="Card Title"
 					description="Description"
 					image="Image Link"
+					distanceToStoop={1}
 				/>
 			</BrowserRouter>
 		)
