@@ -38,9 +38,9 @@ const FeedPage = ({ stoops, setStoops, selectedRange, setSelectedRange }) => {
 					}
 					res.data.sort(sortbytime)
 					setStoops(res.data)
+					setLoading(false)
 				})
 		}
-		setLoading(false)
 	}, [selectedRange, currentPosition.lat, currentPosition.lng])
 
 	return (
