@@ -5,6 +5,7 @@
 	"dependencies": {
 		"@googlemaps/react-wrapper": "^1.1.35",
 		"daisyui": "^2.51.3",
+		"exif-js": "^2.3.0",
 		"luxon": "^3.3.0",
 		"react": "^18.2.0",
 		"react-dom": "^18.2.0",

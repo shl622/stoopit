@@ -1,1 +1,10 @@
-{}
+{
+	"devDependencies": {
+		"husky": "^8.0.3",
+		"prettier": "^2.8.7"
+	},
+	"scripts": {
+		"prepare": "husky install",
+		"format": "prettier */**/*.{js,jsx,css,test.js} --write"
+	}
+}
