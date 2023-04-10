@@ -5,9 +5,12 @@ import TopNav from '../../components/TopNav/TopNav'
 import { useContext } from 'react'
 import mapContext from '../../context/map'
 import { calculateDistance } from '../../utils/map'
+import { useState } from 'react'
+import Spinner from '../../components/SpinnerLoader/SpinnerLoader'
 
 const FeedPage = ({ stoops, setStoops, selectedRange, setSelectedRange }) => {
 	const { currentPosition } = useContext(mapContext)
+	const [loading, setLoading] = useState(true)
 
 	/**
 	 *  @typedef Stoop
@@ -30,11 +33,12 @@ const FeedPage = ({ stoops, setStoops, selectedRange, setSelectedRange }) => {
 						return a.timestamp > b.timestamp
 							? -1
 							: a.timestamp < b.timestamp
-							? 1
-							: 0
+								? 1
+								: 0
 					}
 					res.data.sort(sortbytime)
 					setStoops(res.data)
+					setLoading(false)
 				})
 		}
 	}, [selectedRange, currentPosition.lat, currentPosition.lng])
@@ -48,6 +52,8 @@ const FeedPage = ({ stoops, setStoops, selectedRange, setSelectedRange }) => {
 				setSelectedRange={setSelectedRange}
 			/>
 			<div className="feed">
+				{loading && <Spinner />}
+				{stoops.length === 0 && <>No stoops found, please expand your range</>}
 				{stoops &&
 					stoops.map((/** @type {Stoop} */ stoop) => {
 						const distanceToStoop = calculateDistance(
