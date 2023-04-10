@@ -1,10 +1,10 @@
 {
-<<<<<<< HEAD
-  "devDependencies": {
-    "sinon": "^15.0.3"
-=======
-  "dependencies": {
-    "exif-js": "^2.3.0"
->>>>>>> 999c89ce511a80b8386a024d07dcb76a81245622
-  }
+	"devDependencies": {
+		"husky": "^8.0.3",
+		"prettier": "^2.8.7"
+	},
+	"scripts": {
+		"prepare": "husky install",
+		"format": "prettier */**/*.{js,jsx,css,test.js} --write"
+	}
 }
