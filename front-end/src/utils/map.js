@@ -86,8 +86,6 @@ export function getLocationFromExifData(photoFile) {
 			const lngRef = EXIF.getTag(this, 'GPSLongitudeRef')
 			const lng = EXIF.getTag(this, 'GPSLongitude')
 
-			console.log(latRef, lat, lngRef, lng)
-
 			if (!latRef || !lat || !lngRef || !lng) return null
 
 			const latDecimal =

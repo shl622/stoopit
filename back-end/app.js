@@ -89,25 +89,20 @@ app.get('/api/stoop', (req, res) => {
 	})
 
 	if (!stoopFound) {
-		console.log("stoop not found")
+		console.error("stoop not found")
 		res.status(404).json({
 			error: `No stoop with id ${queryId} found.`
 		})
 		return
 	}
 	else{
-		console.log("stoop found")
 		res.status(200).json({
 			data: stoopFound
 		})
 	}
 })
 
-// TODO: change upload location to S3 bucket instead of local storage, extract into a router
 app.post('/api/stoop', (req, res) => {
-	// show difference in stoopdatabase length for testing
-	// console.log(stoopDatabase.length)
-
 	// get location as array of numbers
 	const location = req.body.location.replaceAll(' ', '').split(',')
 	try {
@@ -147,9 +142,6 @@ app.post('/api/stoop', (req, res) => {
 	} catch (err) {
 		res.status(500).send(err)
 	}
-
-	// show difference in database length
-	console.log(stoopDatabase.length)
 })
 
 // export express app

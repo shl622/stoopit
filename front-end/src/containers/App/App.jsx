@@ -1,5 +1,5 @@
 import './App.css'
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import { themeChange } from 'theme-change'
 import { Routes, Route, Navigate } from 'react-router-dom'
 import { useLocationHook } from '../../hooks/useLocationHook'
@@ -14,6 +14,8 @@ import { MapProvider } from '../../context/map'
 const App = () => {
 	const { lat, lng, setPosition, error } = useLocationHook()
 	const currentPosition = { lat, lng }
+	const [stoops, setStoops] = useState([])
+	const [selectedRange, setSelectedRange] = useState(1)
 	useEffect(() => {
 		themeChange(false)
 	}, [])
@@ -37,12 +39,25 @@ const App = () => {
 							path="/"
 							element={<Navigate to="/feed" replace />}
 						/>
-						<Route path="/feed" element={<FeedPage />} />
+						<Route
+							path="/feed"
+							element={
+								<FeedPage
+									stoops={stoops}
+									setStoops={setStoops}
+									selectedRange={selectedRange}
+									setSelectedRange={setSelectedRange}
+								/>
+							}
+						/>
 						<Route path="/upload" element={<UploadPage />} />
 						<Route
 							path="/map"
 							element={
-								<MapPage currentPosition={currentPosition} />
+								<MapPage
+									currentPosition={currentPosition}
+									stoops={stoops}
+								/>
 							}
 						/>
 						<Route path="/map/:id" element={<StoopMapPage />} />

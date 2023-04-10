@@ -1,10 +1,14 @@
 import FullMap from '../../components/Maps/FullMap/FullMap'
 import MapWrapper from '../../containers/MapWrapper'
-const MapPage = ({ currentPosition }) => {
+const MapPage = ({ currentPosition, stoops }) => {
 	return (
 		<>
 			{currentPosition && (
-				<MapWrapper Component={FullMap} center={currentPosition} />
+				<MapWrapper
+					Component={FullMap}
+					center={currentPosition}
+					stoops={stoops}
+				/>
 			)}
 		</>
 	)
