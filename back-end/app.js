@@ -73,6 +73,33 @@ app.get('/api/stoops', (req, res) => {
 	})
 })
 
+app.get('/api/stoop', (req, res) => {
+	const query = req?.query
+	if (!req?.query || !query?.id) {
+		res.status(400).json({
+			error: 'Request must have `id` query parameter.'
+		})
+		return
+	}
+
+	const queryId = parseInt(query.id)
+
+	const stoopFound = stoopDatabase.find((stoop) => {
+		stoop.id === queryId
+	})
+
+	if (!stoopFound) {
+		res.status(404).json({
+			error: `No stoop with id ${queryId} found.`
+		})
+		return
+	}
+
+	res.status(200).json({
+		data: stoopFound
+	})
+})
+
 // TODO: change upload location to S3 bucket instead of local storage, extract into a router
 app.post('/api/stoop', (req, res) => {
 	// show difference in stoopdatabase length for testing
