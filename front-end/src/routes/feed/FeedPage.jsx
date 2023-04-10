@@ -1,14 +1,13 @@
 import './FeedPage.css'
-import { useEffect, useState } from 'react'
+import { useEffect } from 'react'
 import Card from '../../components/Card/Card'
 import TopNav from '../../components/TopNav/TopNav'
 import { useContext } from 'react'
 import mapContext from '../../context/map'
 import { calculateDistance } from '../../utils/map'
 
-const FeedPage = () => {
+const FeedPage = ({ stoops, setStoops, selectedRange, setSelectedRange }) => {
 	const { currentPosition } = useContext(mapContext)
-	const [selectedRange, setSelectedRange] = useState(1)
 
 	/**
 	 *  @typedef Stoop
@@ -19,8 +18,6 @@ const FeedPage = () => {
 	 *	@property {string} image
 	 *	@property {string} description
 	 */
-
-	const [stoops, setStoops] = useState([])
 
 	useEffect(() => {
 		if (currentPosition.lat && currentPosition.lng) {
@@ -33,8 +30,8 @@ const FeedPage = () => {
 						return a.timestamp > b.timestamp
 							? -1
 							: a.timestamp < b.timestamp
-								? 1
-								: 0
+							? 1
+							: 0
 					}
 					res.data.sort(sortbytime)
 					setStoops(res.data)

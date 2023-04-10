@@ -1,29 +1,9 @@
 import '../map.css'
-import { useRef, useEffect, useState } from 'react'
-import { Stoops } from '../../../mockdata/db'
+import { useRef, useEffect } from 'react'
 import { initMap, renderInitMarkers } from '../../../utils/map'
 
-const mockGetStoops = async () => {
-	return new Promise((resolve, reject) => {
-		resolve(Stoops)
-	})
-}
-
-export default function FullMap({ center }) {
+export default function FullMap({ center, stoops }) {
 	const ref = useRef()
-	const [stoops, setStoops] = useState([])
-
-	useEffect(() => {
-		const getStoops = async () => {
-			try {
-				const stoops = await mockGetStoops()
-				setStoops(stoops)
-			} catch (err) {
-				console.error(err)
-			}
-		}
-		getStoops()
-	}, [])
 
 	useEffect(() => {
 		const map = initMap({ stoops, ref, center })
