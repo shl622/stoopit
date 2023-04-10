@@ -85,19 +85,22 @@ app.get('/api/stoop', (req, res) => {
 	const queryId = parseInt(query.id)
 
 	const stoopFound = stoopDatabase.find((stoop) => {
-		stoop.id === queryId
+		return stoop.id === queryId
 	})
 
 	if (!stoopFound) {
+		console.log("stoop not found")
 		res.status(404).json({
 			error: `No stoop with id ${queryId} found.`
 		})
 		return
 	}
-
-	res.status(200).json({
-		data: stoopFound
-	})
+	else{
+		console.log("stoop found")
+		res.status(200).json({
+			data: stoopFound
+		})
+	}
 })
 
 // TODO: change upload location to S3 bucket instead of local storage, extract into a router
