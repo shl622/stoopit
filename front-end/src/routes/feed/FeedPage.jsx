@@ -33,8 +33,8 @@ const FeedPage = () => {
 						return a.timestamp > b.timestamp
 							? -1
 							: a.timestamp < b.timestamp
-								? 1
-								: 0
+							? 1
+							: 0
 					}
 					res.data.sort(sortbytime)
 					setStoops(res.data)
