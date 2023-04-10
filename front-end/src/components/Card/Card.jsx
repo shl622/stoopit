@@ -6,16 +6,28 @@ import { DateTime } from 'luxon'
 
 // return a card with a title, a body and a picture as a component
 function Card(props) {
-	const { id, description, title, image, lat, lng, timestamp, distanceToStoop, currentPosition } = props
+	const {
+		id,
+		description,
+		title,
+		image,
+		lat,
+		lng,
+		timestamp,
+		distanceToStoop,
+		currentPosition
+	} = props
 	const navigate = useNavigate()
 
-	const distance = distanceToStoop !== null ? distanceToStoop :
-		calculateDistance(
-			lat,
-			lng,
-			currentPosition.lat,
-			currentPosition.lng
-		)
+	const distance =
+		distanceToStoop !== null
+			? distanceToStoop
+			: calculateDistance(
+					lat,
+					lng,
+					currentPosition.lat,
+					currentPosition.lng
+			  )
 
 	// return a card with a title, a body and a picture
 	return (

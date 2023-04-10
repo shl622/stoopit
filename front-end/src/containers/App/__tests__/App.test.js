@@ -49,7 +49,7 @@ describe('App', () => {
 			})
 			await user.upload(screen.getByLabelText('Upload'), fakeFile)
 			expect(mockNavigate).toHaveBeenCalledWith('/upload', {
-				state: { imageSrc: 'imageurl' }
+				state: { imageBlob: fakeFile }
 			})
 		})
 	})
