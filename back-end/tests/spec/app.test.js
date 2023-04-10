@@ -54,3 +54,13 @@ describe('GET /api/stoops',function(){
     })
 })
 
+describe('POST /api/stoop',function(){
+    it('should return 500 without a proper request body', (done)=>{
+        chai.request(app)
+        .post('/api/stoop')
+        .end((err,res)=>{
+            chai.expect(res).to.have.status(500)
+            done()
+        })
+    })
+})
