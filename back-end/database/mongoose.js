@@ -27,8 +27,7 @@ const Stoop = mongoose.model('Stoop', stoopSchema)
 // Create
 const createStoop = async (stoop) => {
 	try {
-		const newStoop = new Stoop(stoop)
-		await newStoop.save()
+		await Stoop.create(stoop)
 	} catch (error) {
 		console.error(error)
 	}
@@ -44,10 +43,19 @@ const updateStoop = async (id, stoop) => {
 }
 
 // Read
-const getStoops = async () => {
+const getAllStoops = async () => {
 	try {
-		const stoops = await Stoop.find()
+		const stoops = await Stoop.find({})
 		return stoops
+	} catch (error) {
+		console.error(error)
+	}
+}
+
+const getStoopById = async (id) => {
+	try {
+		const stoop = await Stoop.findById(id)
+		return stoop
 	} catch (error) {
 		console.error(error)
 	}
@@ -62,4 +70,10 @@ const deleteStoop = async (id) => {
 	}
 }
 
-module.exports = { createStoop, updateStoop, getStoops, deleteStoop }
+module.exports = {
+	createStoop,
+	updateStoop,
+	getAllStoops,
+	getStoopById,
+	deleteStoop
+}
