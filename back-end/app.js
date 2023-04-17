@@ -5,10 +5,14 @@ const fileupload = require('express-fileupload')
 const cors = require('cors')
 const dotenv = require('dotenv')
 const mongoose = require('mongoose')
+const stoopDB = require('./models/stoop')
 
 dotenv.config()
 const app = express()
 const port = 8080
+
+//change domain for static files based on production or dev
+const domain = process.env.NODE_ENV === "production" ? process.env.domain : "http://localhost:8080"
 
 const { stoopDatabase } = require('./mockData/stoopDatabase.js')
 const { calculateDistance } = require('./utils/distance.js')
@@ -33,37 +37,33 @@ app.use('/uploads', express.static(__dirname + '/uploads'))
 app.use(express.json()) // decode JSON-formatted incoming POST data
 app.use(express.urlencoded({ extended: true })) // decode url-encoded incoming POST data
 
-// TODO: extract into a router to make code cleaner
-app.get('/api/stoops', (req, res) => {
+app.get('/api/stoops', async(req, res) => {
 	const query = req?.query
-	// If there's no query params or lat and lng are not params
 	if (!req?.query || !(query?.lat && query?.lng && query?.range)) {
 		res.status(400).json({
 			error: 'Request must have `lat`, `lng`, and `range` query parameters.'
 		})
 		return
 	}
-
 	const queryLat = parseFloat(query.lat)
 	const queryLng = parseFloat(query.lng)
-	// Range in miles
 	const queryRange = parseFloat(query.range)
-
-	// Check "database" for every stoop within queryRange miles
-	const stoopsFound = stoopDatabase.filter(
-		(stoop) =>
-			calculateDistance(
-				queryLat,
-				queryLng,
-				stoop.location.lat,
-				stoop.location.lng
-			) <= queryRange
-	)
-
-	res.status(200).json({
-		length: stoopsFound.length,
-		data: stoopsFound
-	})
+	try{
+		const stoopsFound = await stoopDB.find({})
+		stoopsFound.filter((stoop) =>
+		calculateDistance(
+			queryLat,
+			queryLng,
+			stoop.location.lat,
+			stoop.location.lng
+		) <= queryRange)
+		res.status(200).json({
+			length: stoopsFound.length,
+			data: stoopsFound
+		})
+	}catch(err){
+		console.log(err.message)
+	}
 })
 
 app.get('/api/stoop', (req, res) => {
@@ -95,7 +95,8 @@ app.get('/api/stoop', (req, res) => {
 	}
 })
 
-app.post('/api/stoop', (req, res) => {
+app.post('/api/stoop', async (req, res) => {
+	console.log('posted stoop')
 	// get location as array of numbers
 	const location = req.body.location.replaceAll(' ', '').split(',')
 	try {
@@ -108,9 +109,20 @@ app.post('/api/stoop', (req, res) => {
 		} else {
 			let file = req.files.file
 			let filename = Date.now() + file.name.replaceAll(' ', '')
-			let filePath = 'http://localhost:8080/uploads/' + filename
+			let filePath = path.join(__dirname,`./uploads/${filename}`)
 
 			file.mv(__dirname + '/uploads/' + filename)
+			const newStoop = await stoopDB.create({
+				stoopId: parseInt((Date.now() + Math.floor(Math.random() * 10).toString())),
+				title: req.body.title,
+				location: {
+					lat: parseInt(location[0]),
+					lng: parseInt(location[1])
+				},
+				image: `${domain}/uploads/${filename}`,
+				description: req.body.description
+			})
+			console.log(newStoop)
 			res.send({
 				status: 'success',
 				message: 'File successfully uploaded',
@@ -120,19 +132,9 @@ app.post('/api/stoop', (req, res) => {
 					size: file.size
 				}
 			})
-			stoopDatabase.push({
-				id: +(Date.now() + Math.floor(Math.random() * 10).toString()),
-				location: {
-					lat: +location[0],
-					lng: +location[1]
-				},
-				title: req.body.title,
-				timestamp: Date.now(),
-				image: filePath,
-				description: req.body.description
-			})
 		}
 	} catch (err) {
+		console.log(err.message)
 		res.status(500).send(err)
 	}
 })

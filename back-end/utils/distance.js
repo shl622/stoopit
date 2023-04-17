@@ -1,5 +1,3 @@
-const { AssertionError } = require('chai')
-
 /** Calculate distance between two latitude and longitudes in miles */
 const calculateDistance = (lat1, lng1, lat2, lng2) => {
 	if (!lat1 || !lng1 || !lat2 || !lng2) {
