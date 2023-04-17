@@ -33,8 +33,8 @@ const FeedPage = ({ stoops, setStoops, selectedRange, setSelectedRange }) => {
 						return a.timestamp > b.timestamp
 							? -1
 							: a.timestamp < b.timestamp
-								? 1
-								: 0
+							? 1
+							: 0
 					}
 					res.data.sort(sortbytime)
 					setStoops(res.data)
@@ -53,7 +53,9 @@ const FeedPage = ({ stoops, setStoops, selectedRange, setSelectedRange }) => {
 			/>
 			<div className="feed">
 				{loading && <Spinner />}
-				{stoops.length === 0 && <>No stoops found, please expand your range</>}
+				{stoops.length === 0 && (
+					<>No stoops found, please expand your range</>
+				)}
 				{stoops &&
 					stoops.map((/** @type {Stoop} */ stoop) => {
 						const distanceToStoop = calculateDistance(
