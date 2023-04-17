@@ -136,8 +136,8 @@ app.post('/api/stoop', (req, res) => {
 	}
 })
 
-async function runApp(){
-	try{
+async function runApp() {
+	try {
 		await mongoose.connect(process.env.mongoURI)
 		const listener = app.listen(port, () => {
 			console.log(`Listening on port ${listener.address().port}`)
@@ -145,7 +145,7 @@ async function runApp(){
 		const close = () => {
 			listener.close()
 		}
-	}catch(err){
+	} catch (err) {
 		console.log(err.message)
 	}
 }
