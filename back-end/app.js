@@ -3,7 +3,10 @@ const express = require('express')
 const path = require('path')
 const fileupload = require('express-fileupload')
 const cors = require('cors')
+const dotenv = require('dotenv')
+const mongoose = require('mongoose')
 
+dotenv.config()
 const app = express()
 const port = 8080
 
@@ -18,21 +21,11 @@ const corsOptions = {
 
 app.use(cors(corsOptions))
 
-// listen on port 8080
-const listener = app.listen(port, () => {
-	console.log(`Listening on port ${listener.address().port}`)
-})
-
 app.use(
 	fileupload({
 		createParentPath: true
 	})
 )
-
-// close port
-const close = () => {
-	listener.close()
-}
 
 // Serve static files from the build folder
 app.use('/uploads', express.static(__dirname + '/uploads'))
@@ -144,5 +137,20 @@ app.post('/api/stoop', (req, res) => {
 	}
 })
 
+async function runApp(){
+	try{
+		await mongoose.connect(process.env.mongoURI)
+		const listener = app.listen(port, () => {
+			console.log(`Listening on port ${listener.address().port}`)
+		})
+		const close = () => {
+			listener.close()
+		}
+	}catch(err){
+		console.log(err.message)
+	}
+}
+
+runApp()
 // export express app
 module.exports = app
