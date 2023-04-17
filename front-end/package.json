@@ -14,10 +14,10 @@
 		"theme-change": "^2.3.0"
 	},
 	"scripts": {
-		"prepare": "cd .. && husky install front-end/.husky",
+		"prepare": "cd .. && husky install",
 		"start": "react-scripts start",
 		"build": "react-scripts build",
-		"format": "prettier --ignore-path ../.gitignore --write .",
+		"format": "cd ../ && npm run format",
 		"lint": "eslint src --fix",
 		"test": "react-scripts test --watchAll=false --coverage",
 		"eject": "react-scripts eject"
