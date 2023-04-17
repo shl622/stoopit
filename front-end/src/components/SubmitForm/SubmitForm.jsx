@@ -69,7 +69,11 @@ const SubmitForm = ({ imageBlob = undefined }) => {
 		fetch('http://localhost:8080/api/stoop', {
 			method: 'POST',
 			body: formData
-		}).then((res) => navigate('/feed'))
+		})
+			.then((res) => navigate('/feed'))
+			.catch((err) => {
+				console.log(err.message)
+			})
 	}
 
 	const setMapLocation = (location) => {

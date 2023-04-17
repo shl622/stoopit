@@ -10,6 +10,7 @@ import UploadPage from '../../routes/upload/UploadPage'
 import StoopMapPage from '../../routes/map/[id]/StoopMapPage'
 import Toast from '../../components/Toast/Toast'
 import { MapProvider } from '../../context/map'
+import { StoopProvider } from '../../context/stoop'
 
 const App = () => {
 	const { lat, lng, setPosition, error } = useLocationHook()
@@ -28,43 +29,48 @@ const App = () => {
 				error
 			}}
 		>
-			<div className="app">
-				<Toast
-					show={error}
-					toastMessage="Please Allow Location Services"
-				/>
-				<main>
-					<Routes>
-						<Route
-							path="/"
-							element={<Navigate to="/feed" replace />}
-						/>
-						<Route
-							path="/feed"
-							element={
-								<FeedPage
-									stoops={stoops}
-									setStoops={setStoops}
-									selectedRange={selectedRange}
-									setSelectedRange={setSelectedRange}
-								/>
-							}
-						/>
-						<Route path="/upload" element={<UploadPage />} />
-						<Route
-							path="/map"
-							element={
-								<MapPage
-									currentPosition={currentPosition}
-									stoops={stoops}
-								/>
-							}
-						/>
-						<Route path="/map/:id" element={<StoopMapPage />} />
-					</Routes>
-				</main>
-				<BottomNav />
-			</div>
+			<StoopProvider
+				value={{
+					stoops,
+					setStoops
+				}}
+			>
+				<div className="app">
+					<Toast
+						show={error}
+						toastMessage="Please Allow Location Services"
+					/>
+					<main>
+						<Routes>
+							<Route
+								path="/"
+								element={<Navigate to="/feed" replace />}
+							/>
+							<Route
+								path="/feed"
+								element={
+									<FeedPage
+										selectedRange={selectedRange}
+										setSelectedRange={setSelectedRange}
+									/>
+								}
+							/>
+							<Route path="/upload" element={<UploadPage />} />
+							<Route
+								path="/map"
+								element={
+									<MapPage
+										currentPosition={currentPosition}
+										stoops={stoops}
+									/>
+								}
+							/>
+							<Route path="/map/:id" element={<StoopMapPage />} />
+						</Routes>
+					</main>
+					<BottomNav />
+				</div>
+			</StoopProvider>
 		</MapProvider>
 	)
 }
