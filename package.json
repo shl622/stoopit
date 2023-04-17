@@ -5,6 +5,6 @@
 	},
 	"scripts": {
 		"prepare": "husky install",
-		"format": "prettier */**/*.{js,jsx,css,test.js} --write"
+		"format": "prettier ./**/*.{js,jsx,css,test.js,json} --write"
 	}
 }
