@@ -42,13 +42,11 @@ const FeedPage = ({ selectedRange, setSelectedRange }) => {
 					}
 					res.data.sort(sortbytime)
 					setStoops(res.data)
-					console.log(res.data)
 					setLoading(false)
 				})
 		}
 	}, [selectedRange, currentPosition.lat, currentPosition.lng])
 
-	console.log(stoops)
 	return (
 		<>
 			<TopNav
@@ -60,22 +58,18 @@ const FeedPage = ({ selectedRange, setSelectedRange }) => {
 			<div className="feed">
 				{loading && <Spinner />}
 				{stoops.length === 0 && (
-					<>No stoops found, please expand your range</>
+					<div key="notFound">
+						No stoops found, please expand your range
+					</div>
 				)}
 				{stoops &&
-					stoops.map((/** @type {Stoop} */ stoop) => {
+					stoops.map((/** @type {Stoop} */ stoop, index) => {
 						const distanceToStoop = calculateDistance(
 							currentPosition.lat,
 							currentPosition.lng,
 							stoop.location.lat,
 							stoop.location.lng
 						)
-						console.log(
-							'distances',
-							currentPosition,
-							stoop.location
-						)
-						console.log(distanceToStoop)
 						// Show card only if it is within selectedRange
 						return distanceToStoop <= selectedRange ? (
 							<Card
@@ -90,7 +84,7 @@ const FeedPage = ({ selectedRange, setSelectedRange }) => {
 								description={stoop.description}
 							/>
 						) : (
-							<></>
+							<div key={stoop._id}></div>
 						)
 					})}
 			</div>

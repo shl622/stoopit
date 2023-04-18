@@ -100,7 +100,6 @@ app.get('/api/stoop', (req, res) => {
 })
 
 app.post('/api/stoop', async (req, res) => {
-	console.log('posted stoop')
 	// get location as array of numbers
 	const location = req.body.location.replaceAll(' ', '').split(',')
 	try {
@@ -128,7 +127,6 @@ app.post('/api/stoop', async (req, res) => {
 				image: `${domain}/uploads/${filename}`,
 				description: req.body.description
 			})
-			console.log(newStoop)
 			res.send({
 				status: 'success',
 				message: 'File successfully uploaded',

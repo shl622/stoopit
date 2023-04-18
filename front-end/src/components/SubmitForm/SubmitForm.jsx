@@ -9,6 +9,7 @@ import ImgIcon from '../Icons/Img'
 import MapWrapper from '../../containers/MapWrapper'
 import mapContext from '../../context/map'
 import { useNavigate } from 'react-router-dom'
+import { translateCoordToAddress } from '../../utils/map.mjs'
 
 const SubmitForm = ({ imageBlob = undefined }) => {
 	const [selectedFile] = useState(imageBlob)
@@ -52,8 +53,8 @@ const SubmitForm = ({ imageBlob = undefined }) => {
 		setShowSelectionMap(!showSelectionMap)
 	}
 
-	const handleGeoLocation = (loc) => {
-		setValue('location', `${loc.lat}, ${loc.lng}`)
+	const handleGeoLocation = async (loc) => {
+		setValue('location', await translateCoordToAddress(loc))
 	}
 
 	useEffect(() => {
@@ -66,6 +67,10 @@ const SubmitForm = ({ imageBlob = undefined }) => {
 		for (const key of Object.keys(data)) {
 			formData.append(`${key}`, data[key])
 		}
+		formData.set(
+			'location',
+			`${currentPosition.lat}, ${currentPosition.lng}`
+		)
 		fetch('http://localhost:8080/api/stoop', {
 			method: 'POST',
 			body: formData

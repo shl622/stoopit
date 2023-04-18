@@ -100,3 +100,21 @@ export function getLocationFromExifData(photoFile) {
 		})
 	})
 }
+
+export async function translateCoordToAddress(location){
+	const geocoder = new window.google.maps.Geocoder()
+	const latlng = new window.google.maps.LatLng(location.lat, location.lng)
+	try{
+		const translated = await geocoder.geocode({
+			location : latlng
+		})
+		if (!translated.results || !translated.results[0]){
+			return `Could not find address: coordinates are ${location.lat}, ${location.lng}`
+		}
+		return translated.results[0].formatted_address
+	}
+	catch(err){
+		console.log(err)
+		return `Could not find address: coordinates are ${location.lat}, ${location.lng}`
+	}
+}
