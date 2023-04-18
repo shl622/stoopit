@@ -9,7 +9,7 @@ import ImgIcon from '../Icons/Img'
 import MapWrapper from '../../containers/MapWrapper'
 import mapContext from '../../context/map'
 import { useNavigate } from 'react-router-dom'
-import { translateCoordToAddress } from '../../utils/map.mjs'
+import { translateCoordToAddress } from '../../utils/map.js'
 
 const SubmitForm = ({ imageBlob = undefined }) => {
 	const [selectedFile] = useState(imageBlob)
