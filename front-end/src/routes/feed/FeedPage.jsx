@@ -32,11 +32,13 @@ const FeedPage = ({ selectedRange, setSelectedRange }) => {
 				.then((res) => res.json())
 				.then((res) => {
 					function sortbytime(a, b) {
-						return a.timestamp > b.timestamp
-							? -1
-							: a.timestamp < b.timestamp
-							? 1
-							: 0
+						if (a.timestamp > b.timestamp) {
+							return -1
+						} else if (a.timestamp < b.timestamp) {
+							return 1
+						} else {
+							return 0
+						}
 					}
 					res.data.sort(sortbytime)
 					setStoops(res.data)
