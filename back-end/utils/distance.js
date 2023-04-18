@@ -20,3 +20,5 @@ const calculateDistance = (lat1, lng1, lat2, lng2) => {
 module.exports = {
 	calculateDistance
 }
+
+console.log(calculateDistance(40, -73, 40.7329312, -74.0310905))

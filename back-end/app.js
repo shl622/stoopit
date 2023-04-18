@@ -122,8 +122,8 @@ app.post('/api/stoop', async (req, res) => {
 				),
 				title: req.body.title,
 				location: {
-					lat: parseInt(location[0]),
-					lng: parseInt(location[1])
+					lat: parseFloat(location[0]),
+					lng: parseFloat(location[1])
 				},
 				image: `${domain}/uploads/${filename}`,
 				description: req.body.description
