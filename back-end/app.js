@@ -71,7 +71,7 @@ app.get('/api/stoops', async (req, res) => {
 	}
 })
 
-app.get('/api/stoop', (req, res) => {
+app.get('/api/stoop', async (req, res) => {
 	const query = req?.query
 	if (!req?.query || !query?.id) {
 		res.status(400).json({
@@ -80,21 +80,18 @@ app.get('/api/stoop', (req, res) => {
 		return
 	}
 
-	const queryId = parseInt(query.id)
+	const stoopId = query.id
 
-	const stoopFound = stoopDatabase.find((stoop) => {
-		return stoop.id === queryId
-	})
-
-	if (!stoopFound) {
-		console.error('stoop not found')
-		res.status(404).json({
-			error: `No stoop with id ${queryId} found.`
-		})
-		return
-	} else {
+	try {
+		const stoopFound = await stoopDB.findById(stoopId)
 		res.status(200).json({
 			data: stoopFound
+		})
+		return
+	} catch (err) {
+		console.log(err.message)
+		res.status(404).json({
+			error: `error`
 		})
 	}
 })
