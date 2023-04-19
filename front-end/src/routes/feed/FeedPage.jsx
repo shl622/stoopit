@@ -7,9 +7,11 @@ import mapContext from '../../context/map'
 import { calculateDistance } from '../../utils/map'
 import { useState } from 'react'
 import Spinner from '../../components/SpinnerLoader/SpinnerLoader'
+import stoopContext from '../../context/stoop'
 
-const FeedPage = ({ stoops, setStoops, selectedRange, setSelectedRange }) => {
+const FeedPage = ({ selectedRange, setSelectedRange }) => {
 	const { currentPosition } = useContext(mapContext)
+	const { stoops, setStoops } = useContext(stoopContext)
 	const [loading, setLoading] = useState(true)
 
 	/**
@@ -56,23 +58,24 @@ const FeedPage = ({ stoops, setStoops, selectedRange, setSelectedRange }) => {
 			<div className="feed">
 				{loading && <Spinner />}
 				{stoops.length === 0 && (
-					<>No stoops found, please expand your range</>
+					<div key="notFound">
+						No stoops found, please expand your range
+					</div>
 				)}
 				{stoops &&
-					stoops.map((/** @type {Stoop} */ stoop) => {
+					stoops.map((/** @type {Stoop} */ stoop, index) => {
 						const distanceToStoop = calculateDistance(
 							currentPosition.lat,
 							currentPosition.lng,
 							stoop.location.lat,
 							stoop.location.lng
 						)
-
 						// Show card only if it is within selectedRange
 						return distanceToStoop <= selectedRange ? (
 							<Card
 								distanceToStoop={distanceToStoop}
-								key={stoop.id}
-								id={stoop.id}
+								key={stoop._id}
+								id={stoop._id}
 								image={stoop.image}
 								title={stoop.title}
 								timestamp={stoop.timestamp}
@@ -81,7 +84,7 @@ const FeedPage = ({ stoops, setStoops, selectedRange, setSelectedRange }) => {
 								description={stoop.description}
 							/>
 						) : (
-							<></>
+							<div key={stoop._id}></div>
 						)
 					})}
 			</div>
