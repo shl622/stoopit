@@ -1,5 +1,5 @@
 const { Timestamp } = require('mongodb')
-const { Schema, model } = require('mongoose')
+const { Schema, model, Types } = require('mongoose')
 
 const locationSchema = new Schema({
 	lat: { type: Number },
@@ -8,6 +8,7 @@ const locationSchema = new Schema({
 
 const stoopSchema = new Schema(
 	{
+		_id: {type: Types.ObjectId, auto: true},
 		stoopId: { type: Number },
 		title: { type: String },
 		location: locationSchema,
