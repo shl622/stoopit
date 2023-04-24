@@ -35,7 +35,7 @@ const FeedPage = ({ selectedRange, setSelectedRange }) => {
 					setLoading(false)
 				})
 		}
-	}, [selectedRange, currentPosition.lat, currentPosition.lng])
+	}, [selectedRange, currentPosition.lat, currentPosition.lng, setStoops])
 
 	return (
 		<>
