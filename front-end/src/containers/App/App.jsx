@@ -60,6 +60,8 @@ const App = () => {
 								path="/map"
 								element={
 									<MapPage
+										selectedRange={selectedRange}
+										setSelectedRange={setSelectedRange}
 										currentPosition={currentPosition}
 										stoops={stoops}
 									/>
