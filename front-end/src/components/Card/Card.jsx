@@ -35,7 +35,7 @@ function Card(props) {
 		<>
 			<div className="card card-compact card-layout">
 				<figure>
-					<img src={image} alt="stoop" />
+					<img className="img" src={image} alt="stoop" />
 				</figure>
 				<div className="card-body card-body-layout">
 					<div className="text-stack">

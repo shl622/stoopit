@@ -14,16 +14,24 @@ export function initMap({ stoops, ref, center }) {
 	return map
 }
 
+let currentInfoWindow = null
+
 export function renderMarker({ stoop, map }) {
 	const infoWindow = new window.google.maps.InfoWindow({
 		content: formatInfoWindow(stoop)
 	})
+
 	const marker = new window.google.maps.Marker({
 		position: stoop.location,
 		map,
 		title: stoop.title
 	})
-	marker.addListener('click', () => {
+	marker.addListener('click', (e) => {
+		if (currentInfoWindow) {
+			currentInfoWindow.close()
+		  }
+		currentInfoWindow = infoWindow
+
 		infoWindow.open({
 			anchor: marker,
 			map
