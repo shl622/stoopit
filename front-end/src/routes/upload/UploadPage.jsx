@@ -1,4 +1,5 @@
 import { useLocation } from 'react-router-dom'
+import { Wrapper } from '@googlemaps/react-wrapper'
 import SubmitForm from '../../components/SubmitForm/SubmitForm'
 
 export default function UploadPage() {
@@ -7,7 +8,9 @@ export default function UploadPage() {
 
 	return (
 		<>
-			<SubmitForm imageBlob={imageBlob} />
+			<Wrapper apiKey={process.env.REACT_APP_GOOGLE_MAPS_API_KEY}>
+				<SubmitForm imageBlob={imageBlob} />
+			</Wrapper>
 		</>
 	)
 }

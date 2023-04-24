@@ -15,6 +15,7 @@ const SubmitForm = ({ imageBlob = undefined }) => {
 	const [selectedFile] = useState(imageBlob)
 	const [preview, setPreview] = useState()
 	const [showSelectionMap, setShowSelectionMap] = useState(false)
+	const [selectedLocation, setSelectedLocation] = useState({})
 	const navigate = useNavigate()
 	const { currentPosition } = useContext(mapContext)
 
@@ -54,6 +55,7 @@ const SubmitForm = ({ imageBlob = undefined }) => {
 	}
 
 	const handleGeoLocation = async (loc) => {
+		setSelectedLocation(loc)
 		setValue('location', await translateCoordToAddress(loc))
 	}
 
@@ -69,7 +71,7 @@ const SubmitForm = ({ imageBlob = undefined }) => {
 		}
 		formData.set(
 			'location',
-			`${currentPosition.lat}, ${currentPosition.lng}`
+			`${selectedLocation.lat}, ${selectedLocation.lng}`
 		)
 		fetch('http://localhost:8080/api/stoop', {
 			method: 'POST',

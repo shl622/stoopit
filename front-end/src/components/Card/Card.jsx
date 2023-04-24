@@ -17,7 +17,7 @@ function Card(props) {
 		distanceToStoop,
 		currentPosition
 	} = props
-	console.log(props)
+
 	const navigate = useNavigate()
 
 	const distance =

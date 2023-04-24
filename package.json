@@ -5,6 +5,8 @@
 	},
 	"scripts": {
 		"prepare": "husky install",
-		"format": "prettier ./**/*.{js,jsx,css,test.js,json} --write"
+		"format": "prettier ./**/*.{js,jsx,css,test.js,json} --write",
+		"start-fe": "cd front-end && npm run start",
+		"start-be": "cd back-end && npm run start"
 	}
 }
