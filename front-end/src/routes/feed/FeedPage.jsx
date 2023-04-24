@@ -14,16 +14,6 @@ const FeedPage = ({ selectedRange, setSelectedRange }) => {
 	const { stoops, setStoops } = useContext(stoopContext)
 	const [loading, setLoading] = useState(true)
 
-	/**
-	 *  @typedef Stoop
-	 *  @property {number} id
-	 *	@property {{ lat: number, lng: number }} location
-	 *	@property {string} title,
-	 *	@property {number} timestamp UNIX Timestamp
-	 *	@property {string} image
-	 *	@property {string} description
-	 */
-
 	useEffect(() => {
 		if (currentPosition.lat && currentPosition.lng) {
 			fetch(
@@ -63,7 +53,7 @@ const FeedPage = ({ selectedRange, setSelectedRange }) => {
 					</div>
 				)}
 				{stoops &&
-					stoops.map((/** @type {Stoop} */ stoop, index) => {
+					stoops.map((stoop, index) => {
 						const distanceToStoop = calculateDistance(
 							currentPosition.lat,
 							currentPosition.lng,
