@@ -8,7 +8,7 @@ const locationSchema = new Schema({
 
 const stoopSchema = new Schema(
 	{
-		_id: {type: Types.ObjectId, auto: true},
+		_id: { type: Types.ObjectId, auto: true },
 		stoopId: { type: Number },
 		title: { type: String },
 		location: locationSchema,
