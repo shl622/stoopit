@@ -1,6 +1,6 @@
 import './TopNav.css'
 import { useState, useEffect, useContext } from 'react'
-import { calculateDistance } from '../../utils/map'
+import { calculateDistance } from '../../utils/location'
 import mapContext from '../../context/map'
 
 const TopNav = ({ stoops, selectedRange, setSelectedRange }) => {

@@ -1,5 +1,5 @@
 import './SubmitForm.css'
-import { getLocationFromExifData } from '../../utils/map'
+import { getLocationFromExifData } from '../../utils/location'
 
 import { useForm } from 'react-hook-form'
 import { useState, useEffect, useContext } from 'react'
@@ -9,7 +9,7 @@ import ImgIcon from '../Icons/Img'
 import MapWrapper from '../../containers/MapWrapper'
 import mapContext from '../../context/map'
 import { useNavigate } from 'react-router-dom'
-import { translateCoordToAddress } from '../../utils/map.js'
+import { translateCoordToAddress } from '../../utils/location'
 
 const SubmitForm = ({ imageBlob = undefined }) => {
 	const [selectedFile] = useState(imageBlob)
