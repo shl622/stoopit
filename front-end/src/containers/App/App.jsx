@@ -16,7 +16,7 @@ const App = () => {
 	const { lat, lng, setPosition, error } = useLocationHook()
 	const currentPosition = { lat, lng }
 	const [stoops, setStoops] = useState([])
-	const [selectedRange, setSelectedRange] = useState(1)
+	const [selectedRange, setSelectedRange] = useState(3)
 	useEffect(() => {
 		themeChange(false)
 	}, [])
