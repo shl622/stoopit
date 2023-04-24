@@ -5,6 +5,8 @@ import { useContext } from 'react'
 import mapContext from '../../../context/map'
 import stoopContext from '../../../context/stoop'
 import { useState } from 'react'
+import { useEffect } from 'react'
+import { useRef } from 'react'
 
 export default function FullMap({
 	center,
@@ -43,7 +45,13 @@ export default function FullMap({
 					setLoading(false)
 				})
 		}
-	}, [selectedRange, currentPosition.lat, currentPosition.lng])
+	}, [
+		selectedRange,
+		currentPosition.lat,
+		currentPosition.lng,
+		setStoops,
+		setLoading
+	])
 
 	return (
 		<>
