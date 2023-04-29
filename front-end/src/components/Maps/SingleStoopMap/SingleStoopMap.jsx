@@ -1,6 +1,6 @@
 import '../map.css'
 import { useRef, useEffect } from 'react'
-import { initMap, renderMarker } from '../../../utils/map'
+import { initMap, renderInitMarkers, renderMarker } from '../../../utils/map'
 import { useParams } from 'react-router-dom'
 
 export default function SingleStoopMap() {
@@ -9,13 +9,31 @@ export default function SingleStoopMap() {
 	useEffect(() => {
 		const setMapStoop = async (id) => {
 			try {
-				const stoop = (
+				const selectedStoop = (
 					await (
-						await fetch('http://localhost:8080/api/stoop?id=' + id)
+						await fetch(`http://localhost:8080/api/stoop/?id=${id}`)
 					).json()
 				).data
-				const map = initMap({ stoop, ref, center: stoop.location })
-				const { marker, infoWindow } = renderMarker({ stoop, map })
+				const stoops = (
+					await (
+						await fetch(
+							`http://localhost:8080/api/stoops/?lat=${selectedStoop.location.lat}&lng=${selectedStoop.location.lng}&range=10}`
+						)
+					).json()
+				).data
+				const map = initMap({
+					stoops,
+					ref,
+					center: selectedStoop.location
+				})
+				const filteredStoops = stoops.filter(
+					(stoop) => stoop._id !== selectedStoop._id
+				)
+				renderInitMarkers({ stoops: filteredStoops, map })
+				const { marker, infoWindow } = renderMarker({
+					stoop: selectedStoop,
+					map
+				})
 				// Open stoop info when single stoop map is opened
 				infoWindow.open({
 					anchor: marker,

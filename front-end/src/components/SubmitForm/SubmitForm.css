@@ -52,7 +52,15 @@ h1 {
 	top: 0;
 	left: 0;
 	height: 100%;
+	min-height: 100%;
 	width: 100%;
+	min-width: 100%;
+}
+.mapDiv > * {
+	height: 100%;
+	min-height: 100%;
+	width: 100%;
+	min-width: 100%;
 }
 
 .errorMsg {
