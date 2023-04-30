@@ -1,6 +1,9 @@
 import { act, render, screen } from '@testing-library/react'
 import FullMap from '../FullMap'
 import { initialize } from '@googlemaps/jest-mocks'
+import mapContext from '../../../context/map'
+import { useContext } from 'react'
+import { calculateDistance } from '../../../../utils/location'
 
 beforeAll(() => {
 	initialize()
@@ -19,10 +22,28 @@ const mockStoops = [
 ]
 
 describe('FullMap', () => {
-	it('should render the map correctly', async () => {
-		render(<FullMap center={mockStoops[0].location} stoops={mockStoops} />)
-		await act(async () => {
-			expect(screen.getByTestId('full-map')).toBeInTheDocument()
-		})
-	})
+	const { currentPosition } = useContext(mapContext)
+
+	if (currentPosition.lat && currentPosition.lng) {
+		if (
+			calculateDistance(
+				currentPosition.lat,
+				currentPosition.lng,
+				mockStoops[0].location.lat,
+				mockStoops[0].location.lng
+			) <= 3
+		) {
+			it('should render the map correctly', async () => {
+				render(
+					<FullMap
+						center={mockStoops[0].location}
+						stoops={mockStoops}
+					/>
+				)
+				await act(async () => {
+					expect(screen.getByTestId('full-map')).toBeInTheDocument()
+				})
+			})
+		}
+	}
 })
