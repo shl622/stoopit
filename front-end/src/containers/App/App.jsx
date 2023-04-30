@@ -11,6 +11,7 @@ import StoopMapPage from '../../routes/map/[id]/StoopMapPage'
 import Toast from '../../components/Toast/Toast'
 import { MapProvider } from '../../context/map'
 import { StoopProvider } from '../../context/stoop'
+import TopNav from '../../components/TopNav/TopNav'
 
 const App = () => {
 	const { lat, lng, setPosition, error } = useLocationHook()
@@ -41,6 +42,13 @@ const App = () => {
 						toastMessage="Please Allow Location Services"
 					/>
 					<main>
+						<TopNav
+							currentPosition={currentPosition}
+							stoops={stoops}
+							selectedRange={selectedRange}
+							setSelectedRange={setSelectedRange}
+						/>
+
 						<Routes>
 							<Route
 								path="/"
