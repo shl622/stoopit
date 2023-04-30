@@ -1,7 +1,7 @@
 import { act, render, screen } from '@testing-library/react'
 import FullMap from '../FullMap'
 import { initialize } from '@googlemaps/jest-mocks'
-import mapContext from '../../../context/map'
+import mapContext from '../../../../context/map'
 import { useContext } from 'react'
 import { calculateDistance } from '../../../../utils/location'
 
