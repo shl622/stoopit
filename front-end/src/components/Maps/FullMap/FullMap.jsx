@@ -1,6 +1,5 @@
 import '../map.css'
 import { initMap, renderInitMarkers } from '../../../utils/map'
-import TopNav from '../../TopNav/TopNav'
 import { useContext } from 'react'
 import mapContext from '../../../context/map'
 import stoopContext from '../../../context/stoop'
@@ -56,12 +55,6 @@ export default function FullMap({
 	return (
 		<>
 			<div className="fullMapContainer">
-				<TopNav
-					currentPosition={currentPosition}
-					stoops={stoops}
-					selectedRange={selectedRange}
-					setSelectedRange={setSelectedRange}
-				/>
 				<div
 					className="fullMap"
 					ref={ref}

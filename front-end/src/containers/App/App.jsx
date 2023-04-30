@@ -41,14 +41,13 @@ const App = () => {
 						show={error}
 						toastMessage="Please Allow Location Services"
 					/>
+					<TopNav
+						currentPosition={currentPosition}
+						stoops={stoops}
+						selectedRange={selectedRange}
+						setSelectedRange={setSelectedRange}
+					/>
 					<main>
-						<TopNav
-							currentPosition={currentPosition}
-							stoops={stoops}
-							selectedRange={selectedRange}
-							setSelectedRange={setSelectedRange}
-						/>
-
 						<Routes>
 							<Route
 								path="/"
