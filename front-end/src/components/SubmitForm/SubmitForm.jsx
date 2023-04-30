@@ -110,7 +110,13 @@ const SubmitForm = ({ imageBlob = undefined }) => {
 					>
 						<span>Image</span>
 						<div className="imgContainer input input-bordered">
-							{preview && <img alt="Stoop" src={preview} />}
+							{preview && (
+								<img
+									className="img"
+									alt="Stoop"
+									src={preview}
+								/>
+							)}
 							{!preview && <ImgIcon />}
 						</div>
 					</label>

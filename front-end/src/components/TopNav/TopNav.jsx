@@ -1,7 +1,8 @@
 import './TopNav.css'
-import { useState, useEffect, useContext } from 'react'
+import { useEffect, useContext } from 'react'
 import { calculateDistance } from '../../utils/location'
 import mapContext from '../../context/map'
+import { useState } from 'react'
 
 const TopNav = ({ stoops, selectedRange, setSelectedRange }) => {
 	const { currentPosition } = useContext(mapContext)
