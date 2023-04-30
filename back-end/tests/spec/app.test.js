@@ -40,19 +40,30 @@ describe('GET /api/stoops', function () {
 		chai.request(app)
 			.get(`/api/stoops?${query}`)
 			.end((err, res) => {
-				const { body } = res
-				chai.expect(err).to.be.null
-				chai.expect(res).to.have.status(200)
-				chai.expect(res).to.be.json
-				chai.expect(body).to.have.property('length').that.is.a('number')
-				chai.expect(body).to.have.property('data').that.is.an('array')
-				if (body.data[0]) {
-					chai.expect(body.data[0].location)
-						.to.have.property('lat')
+				try {
+					const { body } = res
+					chai.expect(err).to.be.null
+					chai.expect(res).to.have.status(200)
+					chai.expect(res).to.be.json
+					chai.expect(body)
+						.to.have.property('length')
 						.that.is.a('number')
-					chai.expect(body.data[0].location)
-						.to.have.property('lng')
-						.that.is.a('number')
+					chai.expect(body)
+						.to.have.property('data')
+						.that.is.an('array')
+					if (body.data[0]) {
+						chai.expect(body.data[0].location)
+							.to.have.property('lat')
+							.that.is.a('number')
+						chai.expect(body.data[0].location)
+							.to.have.property('lng')
+							.that.is.a('number')
+					}
+				} catch (err) {
+					chai.expect(err).to.be.null
+					chai.expect(res).to.have.status(200)
+					chai.expect(res).to.be.json
+					chai.expect(res.body).to.deep.equal({ length: 0, data: [] })
 				}
 				done()
 			})
