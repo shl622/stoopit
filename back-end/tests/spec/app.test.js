@@ -33,9 +33,9 @@ describe('GET /api/stoops', function () {
 			})
 	})
 	it('should return 200 with a list of stoops and the length of the list with valid query', (done) => {
-		const lat = randomFloatInRange(40.5, 40.9)
-		const lng = -randomFloatInRange(73.5, 74)
-		const range = randomFloatInRange('0', 10)
+		const lat = 40.726111
+		const lng = -74.009084
+		const range = 4
 		const query = `lat=${lat}&lng=${lng}&range=${range}`
 		chai.request(app)
 			.get(`/api/stoops?${query}`)
@@ -47,14 +47,14 @@ describe('GET /api/stoops', function () {
 				chai.expect(res).to.be.json
 				chai.expect(body).to.have.property('length').that.is.a('number')
 				chai.expect(body).to.have.property('data').that.is.an('array')
-				// if (body.data[0]) {
-				// 	chai.expect(body.data[0].location)
-				// 		.to.have.property('lat')
-				// 		.that.is.a('number')
-				// 	chai.expect(body.data[0].location)
-				// 		.to.have.property('lng')
-				// 		.that.is.a('number')
-				// }
+				if (body.data[0]) {
+					chai.expect(body.data[0].location)
+						.to.have.property('lat')
+						.that.is.a('number')
+					chai.expect(body.data[0].location)
+						.to.have.property('lng')
+						.that.is.a('number')
+				}
 				done()
 			})
 	})
