@@ -1,6 +1,7 @@
 import { act, render, screen } from '@testing-library/react'
 import FullMap from '../FullMap'
 import { initialize } from '@googlemaps/jest-mocks'
+import mapContext from '../../../../context/map'
 
 beforeAll(() => {
 	initialize()
@@ -18,9 +19,22 @@ const mockStoops = [
 	}
 ]
 
+const mockMapContext = {
+	currentPosition: { lat: 40.7209, lng: -73.9961 }
+}
+
 describe('FullMap', () => {
 	it('should render the map correctly', async () => {
-		render(<FullMap center={mockStoops[0].location} stoops={mockStoops} />)
+		render(
+			<FullMap center={mockStoops[0].location} stoops={mockStoops} />,
+			{
+				wrapper: ({ children }) => (
+					<mapContext.Provider value={mockMapContext}>
+						{children}
+					</mapContext.Provider>
+				)
+			}
+		)
 		await act(async () => {
 			expect(screen.getByTestId('full-map')).toBeInTheDocument()
 		})

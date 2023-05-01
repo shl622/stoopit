@@ -33,14 +33,15 @@ describe('GET /api/stoops', function () {
 			})
 	})
 	it('should return 200 with a list of stoops and the length of the list with valid query', (done) => {
-		const lat = randomFloatInRange(40.5, 40.9)
-		const lng = -randomFloatInRange(73.5, 74)
-		const range = randomFloatInRange('0', 10)
+		const lat = 40.726111
+		const lng = -74.009084
+		const range = 4
 		const query = `lat=${lat}&lng=${lng}&range=${range}`
 		chai.request(app)
 			.get(`/api/stoops?${query}`)
 			.end((err, res) => {
 				const { body } = res
+
 				chai.expect(err).to.be.null
 				chai.expect(res).to.have.status(200)
 				chai.expect(res).to.be.json
@@ -83,7 +84,7 @@ describe('GET /api/stoop', function () {
 			})
 	})
 	it('should return 200 with matching stoop if found in database', (done) => {
-		const correctId = '643ef88d84fc9f672d0e015a'
+		const correctId = '643eebb5faebbc42099790a9'
 		chai.request(app)
 			.get(`/api/stoop?id=${correctId}`)
 			.end((err, res) => {
