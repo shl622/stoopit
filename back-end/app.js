@@ -1,7 +1,7 @@
 // import
 const express = require('express')
 const path = require('path')
-const fileupload = require('express-fileupload')
+const fileUpload = require('express-fileupload')
 const cors = require('cors')
 const dotenv = require('dotenv')
 const mongoose = require('mongoose')
@@ -28,7 +28,7 @@ const corsOptions = {
 app.use(cors(corsOptions))
 
 app.use(
-	fileupload({
+	fileUpload({
 		createParentPath: true
 	})
 )
@@ -52,7 +52,7 @@ app.get('/api/stoops', async (req, res) => {
 	const queryRange = parseFloat(query.range)
 	try {
 		const stoopsFound = await stoopDB.find({})
-		stoopsFound.filter(
+		const filteredStoops = stoopsFound.filter(
 			(stoop) =>
 				calculateDistance(
 					queryLat,
@@ -62,8 +62,8 @@ app.get('/api/stoops', async (req, res) => {
 				) <= queryRange
 		)
 		res.status(200).json({
-			length: stoopsFound.length,
-			data: stoopsFound
+			length: filteredStoops.length,
+			data: filteredStoops
 		})
 	} catch (err) {
 		console.log(err.message)
