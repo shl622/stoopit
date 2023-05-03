@@ -26,7 +26,7 @@ describe('App', () => {
 			expect(mockNavigate).toHaveBeenCalledWith('/map')
 
 			await user.click(screen.getByText('Feed'))
-			expect(mockNavigate).toHaveBeenCalledWith('/feed')
+			expect(mockNavigate).toHaveBeenCalledWith('/')
 		})
 	})
 
