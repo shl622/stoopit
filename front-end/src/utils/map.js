@@ -14,7 +14,6 @@ export function initMap({ stoops, ref, center }) {
 	return map
 }
 
-//variable that saves previous infowindow
 let currentInfoWindow = null
 
 export function renderMarker({ stoop, map }) {
