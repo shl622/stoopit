@@ -39,6 +39,17 @@ app.use('/uploads', express.static(__dirname + '/uploads'))
 app.use(express.json()) // decode JSON-formatted incoming POST data
 app.use(express.urlencoded({ extended: true })) // decode url-encoded incoming POST data
 
+if (process.env.NODE_ENV === 'production') {
+	// Compute the build path and index.html path
+	const buildPath = path.resolve(__dirname, '../front-end/build')
+	const index = path.join(buildPath, 'index.html')
+
+	// Setup build path as a static assets path
+	app.use(express.static(buildPath))
+	// Serve index.html on unmatched routes
+	app.get('/', (req, res) => res.sendFile(index))
+}
+
 app.get('/api/stoops', async (req, res) => {
 	const query = req?.query
 	if (!req?.query || !(query?.lat && query?.lng && query?.range)) {

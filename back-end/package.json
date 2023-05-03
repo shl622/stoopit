@@ -6,7 +6,8 @@
 	"scripts": {
 		"prepare": "cd .. && husky install",
 		"test": "mocha tests/**/*.js --exit",
-		"start": "nodemon --ignore .json app.js",
+		"dev": "nodemon --ignore .json app.js",
+		"start": "node app.js",
 		"coverage": "nyc npm run test",
 		"format": "cd ../ && npm run format"
 	},
