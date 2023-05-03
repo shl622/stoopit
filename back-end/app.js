@@ -52,7 +52,7 @@ if (environment === 'production') {
 }
 
 // Serve static files from the uploads folder
-app.use('/uploads', express.static(__dirname + '/uploads'))
+app.use('/uploads', express.static(path.join(__dirname, 'uploads')))
 
 app.get('/api/stoops', async (req, res) => {
 	const query = req?.query
@@ -126,9 +126,8 @@ app.post('/api/stoop', async (req, res) => {
 		} else {
 			let file = req.files.file
 			let filename = Date.now() + file.name.replaceAll(' ', '')
-			let filePath = path.join(__dirname, `./uploads/${filename}`)
 
-			file.mv(__dirname + filename)
+			file.mv(path.join(__dirname, '/uploads/', filename))
 			const newStoop = await stoopDB.create({
 				stoopId: parseInt(
 					Date.now() + Math.floor(Math.random() * 10).toString()
@@ -138,7 +137,7 @@ app.post('/api/stoop', async (req, res) => {
 					lat: parseFloat(location[0]),
 					lng: parseFloat(location[1])
 				},
-				image: `${domain}/${filename}`,
+				image: `${domain}/uploads/${filename}`,
 				description: req.body.description,
 				env: environment === 'development' ? environment : undefined
 			})
