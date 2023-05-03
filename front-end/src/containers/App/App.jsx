@@ -1,7 +1,7 @@
 import './App.css'
 import { useEffect, useState } from 'react'
 import { themeChange } from 'theme-change'
-import { Routes, Route, Navigate } from 'react-router-dom'
+import { Routes, Route, useLocation } from 'react-router-dom'
 import { useLocationHook } from '../../hooks/useLocationHook'
 import MapPage from '../../routes/map/MapPage'
 import FeedPage from '../../routes/feed/FeedPage'
@@ -22,6 +22,17 @@ const App = () => {
 		themeChange(false)
 	}, [])
 
+	// Hide top nav if on upload page
+	const { pathname } = useLocation()
+	const [showTopNav, setShowTopNav] = useState(true)
+	useEffect(() => {
+		if (pathname === '/upload') {
+			setShowTopNav(false)
+		} else {
+			setShowTopNav(true)
+		}
+	}, [pathname])
+
 	return (
 		<MapProvider
 			value={{
@@ -41,20 +52,20 @@ const App = () => {
 						show={error}
 						toastMessage="Please Allow Location Services"
 					/>
-					<TopNav
-						currentPosition={currentPosition}
-						stoops={stoops}
-						selectedRange={selectedRange}
-						setSelectedRange={setSelectedRange}
-					/>
+					{showTopNav ? (
+						<TopNav
+							currentPosition={currentPosition}
+							stoops={stoops}
+							selectedRange={selectedRange}
+							setSelectedRange={setSelectedRange}
+						/>
+					) : (
+						<></>
+					)}
 					<main>
 						<Routes>
 							<Route
 								path="/"
-								element={<Navigate to="/feed" replace />}
-							/>
-							<Route
-								path="/feed"
 								element={
 									<FeedPage
 										selectedRange={selectedRange}

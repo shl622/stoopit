@@ -34,7 +34,7 @@ export default function BottomNav() {
 				<button
 					type="button"
 					className="btm-nav-icon"
-					onClick={() => navigate('/feed')}
+					onClick={() => navigate('/')}
 				>
 					<HomeIcon />
 					<span className="btm-nav-label">Feed</span>

@@ -48,6 +48,9 @@ if (process.env.NODE_ENV === 'production') {
 	app.use(express.static(buildPath))
 	// Serve index.html on unmatched routes
 	app.get('/', (req, res) => res.sendFile(index))
+	app.get('/map', (req, res) => res.sendFile(index))
+	app.get('/upload', (req, res) => res.sendFile(index))
+	app.get('/map/:id', (req, res) => res.sendFile(index))
 }
 
 app.get('/api/stoops', async (req, res) => {
