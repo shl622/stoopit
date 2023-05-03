@@ -56,9 +56,6 @@ if (environment === 'production') {
 const uploadsDir = path.join(__dirname, 'uploads')
 app.use('/uploads', express.static(uploadsDir))
 
-// Serve static files from the 'uploads' directory
-app.use('/uploads', express.static(uploadsDir))
-
 app.get('/api/stoops', async (req, res) => {
 	const query = req?.query
 	if (!req?.query || !(query?.lat && query?.lng && query?.range)) {
