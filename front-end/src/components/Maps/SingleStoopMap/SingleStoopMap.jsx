@@ -12,14 +12,24 @@ export default function SingleStoopMap() {
 				const selectedStoop = (
 					await (
 						await fetch(
-							`https://sea-turtle-app-pvtu7.ondigitalocean.app/api/stoop/?id=${id}`
+							`${
+								process.env.NODE_ENV === 'production'
+									? 'https://sea-turtle-app-pvtu7.ondigitalocean.app'
+									: 'http://localhost:8080'
+							}/api/stoop/?id=${id}`
 						)
 					).json()
 				).data
 				const stoops = (
 					await (
 						await fetch(
-							`https://sea-turtle-app-pvtu7.ondigitalocean.app/api/stoops/?lat=${selectedStoop.location.lat}&lng=${selectedStoop.location.lng}&range=10}`
+							`${
+								process.env.NODE_ENV === 'production'
+									? 'https://sea-turtle-app-pvtu7.ondigitalocean.app'
+									: 'http://localhost:8080'
+							}/api/stoops/?lat=${
+								selectedStoop.location.lat
+							}&lng=${selectedStoop.location.lng}&range=10}`
 						)
 					).json()
 				).data

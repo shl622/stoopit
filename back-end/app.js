@@ -11,10 +11,12 @@ dotenv.config()
 const app = express()
 const port = 8080
 
+const environment = process?.env?.NODE_ENV ?? 'development'
+
 //change domain for static files based on production or dev
 const domain =
-	process.env.NODE_ENV === 'production'
-		? process.env.domain
+	environment === 'production'
+		? 'https://sea-turtle-app-pvtu7.ondigitalocean.app'
 		: 'http://localhost:8080'
 
 const { calculateDistance } = require('./utils/distance.js')
@@ -33,14 +35,10 @@ app.use(
 	})
 )
 
-// Serve static files from the build folder
-app.use('/uploads', express.static(__dirname + '/uploads'))
-
 app.use(express.json()) // decode JSON-formatted incoming POST data
 app.use(express.urlencoded({ extended: true })) // decode url-encoded incoming POST data
 
-if (process.env.NODE_ENV === 'production') {
-	// Compute the build path and index.html path
+if (environment === 'production') {
 	const buildPath = path.resolve(__dirname, '../front-end/build')
 	const index = path.join(buildPath, 'index.html')
 
@@ -52,6 +50,9 @@ if (process.env.NODE_ENV === 'production') {
 	app.get('/upload', (req, res) => res.sendFile(index))
 	app.get('/map/:id', (req, res) => res.sendFile(index))
 }
+
+// Serve static files from the uploads folder
+app.use('/uploads', express.static(__dirname + '/uploads'))
 
 app.get('/api/stoops', async (req, res) => {
 	const query = req?.query
@@ -73,7 +74,7 @@ app.get('/api/stoops', async (req, res) => {
 					queryLng,
 					stoop.location.lat,
 					stoop.location.lng
-				) <= queryRange
+				) <= queryRange && (stoop?.env ?? 'production') === environment
 		)
 		res.status(200).json({
 			length: filteredStoops.length,
@@ -97,6 +98,9 @@ app.get('/api/stoop', async (req, res) => {
 
 	try {
 		const stoopFound = await stoopDB.findById(stoopId)
+		if (stoopFound.env === 'development') {
+			throw new Error('Requested development environment stoop')
+		}
 		res.status(200).json({
 			data: stoopFound
 		})
@@ -104,7 +108,7 @@ app.get('/api/stoop', async (req, res) => {
 	} catch (err) {
 		console.log(err.message)
 		res.status(404).json({
-			error: `error`
+			error: `Error finding stoop by id`
 		})
 	}
 })
@@ -135,7 +139,8 @@ app.post('/api/stoop', async (req, res) => {
 					lng: parseFloat(location[1])
 				},
 				image: `${domain}/uploads/${filename}`,
-				description: req.body.description
+				description: req.body.description,
+				env: environment === 'development' ? environment : undefined
 			})
 			res.send({
 				status: 'success',

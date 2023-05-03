@@ -73,11 +73,18 @@ const SubmitForm = ({ imageBlob = undefined }) => {
 			'location',
 			`${selectedLocation.lat}, ${selectedLocation.lng}`
 		)
-		fetch('https://sea-turtle-app-pvtu7.ondigitalocean.app/api/stoop', {
-			method: 'POST',
-			body: formData
-		})
-			.then((res) => navigate('/feed'))
+		fetch(
+			`${
+				process.env.NODE_ENV === 'production'
+					? 'https://sea-turtle-app-pvtu7.ondigitalocean.app'
+					: 'http://localhost:8080'
+			}/api/stoop`,
+			{
+				method: 'POST',
+				body: formData
+			}
+		)
+			.then((res) => navigate('/'))
 			.catch((err) => {
 				console.log(err.message)
 			})
