@@ -1,5 +1,6 @@
 // import
 const express = require('express')
+const fs = require('fs')
 const path = require('path')
 const fileUpload = require('express-fileupload')
 const cors = require('cors')
@@ -52,7 +53,7 @@ if (environment === 'production') {
 }
 
 // Serve static files from the uploads folder
-app.use('/uploads', express.static(path.join(__dirname, 'uploads')))
+app.use('/uploads', express.static(path.join(__dirname, '/uploads')))
 
 app.get('/api/stoops', async (req, res) => {
 	const query = req?.query
@@ -126,8 +127,20 @@ app.post('/api/stoop', async (req, res) => {
 		} else {
 			let file = req.files.file
 			let filename = Date.now() + file.name.replaceAll(' ', '')
+			let uploadDir = path.join(__dirname, 'uploads')
+			let filePath = path.join(uploadDir, filename)
 
-			file.mv(path.join(__dirname, '/uploads/', filename))
+			// Check if the 'uploads' folder exists, if not, create it
+			if (!fs.existsSync(uploadDir)) {
+				fs.mkdirSync(uploadDir)
+			}
+
+			file.mv(filePath, (err) => {
+				if (err) {
+					console.error(err)
+					return res.status(500).send(err)
+				}
+			})
 			const newStoop = await stoopDB.create({
 				stoopId: parseInt(
 					Date.now() + Math.floor(Math.random() * 10).toString()
