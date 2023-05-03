@@ -15,6 +15,11 @@ h1 {
 	text-align: center;
 }
 
+.map-fullscreen div .fullMap {
+	height: 100%;
+	z-index: 100;
+}
+
 .btn-info {
 	font-size: 0.7rem;
 }
