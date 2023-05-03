@@ -127,7 +127,8 @@ app.post('/api/stoop', async (req, res) => {
 			let file = req.files.file
 			let filename = Date.now() + file.name.replaceAll(' ', '')
 
-			file.mv(path.join(__dirname, '/uploads/', filename))
+			await file.mv(path.join(__dirname, '/uploads/', filename))
+			res.send('File uploaded successfully.')
 			const newStoop = await stoopDB.create({
 				stoopId: parseInt(
 					Date.now() + Math.floor(Math.random() * 10).toString()
