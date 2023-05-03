@@ -17,7 +17,13 @@ const FeedPage = ({ selectedRange, setSelectedRange }) => {
 	useEffect(() => {
 		if (currentPosition.lat && currentPosition.lng) {
 			fetch(
-				`https://sea-turtle-app-pvtu7.ondigitalocean.app/api/stoops?lat=${currentPosition.lat}&lng=${currentPosition.lng}&range=${selectedRange}`
+				`${
+					process.env.NODE_ENV === 'production'
+						? 'https://sea-turtle-app-pvtu7.ondigitalocean.app'
+						: 'http://localhost:8080'
+				}/api/stoops?lat=${currentPosition.lat}&lng=${
+					currentPosition.lng
+				}&range=${selectedRange}`
 			)
 				.then((res) => res.json())
 				.then((res) => {

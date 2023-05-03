@@ -13,7 +13,8 @@ const stoopSchema = new Schema(
 		title: { type: String },
 		location: locationSchema,
 		image: { type: String },
-		description: { type: String }
+		description: { type: String },
+		env: { type: String }
 	},
 	{ timestamps: true }
 )
