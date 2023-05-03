@@ -5,8 +5,10 @@
 	},
 	"scripts": {
 		"prepare": "husky install",
+		"build": "cd front-end && npm run build",
+		"start": "cd back-end && npm run start",
 		"format": "prettier ./**/*.{js,jsx,css,test.js,json} --write",
-		"start-fe": "cd front-end && npm run start",
-		"start-be": "cd back-end && npm run start"
+		"fe-dev": "cd front-end && npm run dev",
+		"be-dev": "cd back-end && npm run dev"
 	}
 }
