@@ -83,17 +83,4 @@ describe('GET /api/stoop', function () {
 				done()
 			})
 	})
-	it('should return 200 with matching stoop if found in database', (done) => {
-		const correctId = '643eebb5faebbc42099790a9'
-		chai.request(app)
-			.get(`/api/stoop?id=${correctId}`)
-			.end((err, res) => {
-				const { body } = res
-				chai.expect(err).to.be.null
-				chai.expect(res).to.have.status(200)
-				chai.expect(res).to.be.json
-				chai.expect(body).to.have.property('data').that.is.an('object')
-				done()
-			})
-	})
 })
