@@ -1,13 +1,13 @@
 .toast {
 	position: fixed;
-	top: 5rem; /* Adjust the vertical distance from the top */
-	right: 1rem; /* Adjust the horizontal distance from the right */
+	top: 5rem;
+	right: 1rem;
 	background-color: var(--info);
 	z-index: 1000;
-	padding: 0.5rem 1rem; /* Adjust the padding to control the size */
-	border-radius: 1rem; /* Control the roundness of the corners */
-	box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Add a subtle shadow for a better appearance */
-	font-size: 0.875rem; /* Adjust the font size of the toast message */
+	padding: 0.3rem 0.5rem;
+	border-radius: 1rem;
+	box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+	font-size: 1;
 }
 
 .toast.show {
