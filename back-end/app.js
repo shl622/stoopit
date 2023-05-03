@@ -128,7 +128,7 @@ app.post('/api/stoop', async (req, res) => {
 			let filename = Date.now() + file.name.replaceAll(' ', '')
 			let filePath = path.join(__dirname, `./uploads/${filename}`)
 
-			file.mv(__dirname + '/uploads/' + filename)
+			file.mv(__dirname + filename)
 			const newStoop = await stoopDB.create({
 				stoopId: parseInt(
 					Date.now() + Math.floor(Math.random() * 10).toString()
@@ -138,7 +138,7 @@ app.post('/api/stoop', async (req, res) => {
 					lat: parseFloat(location[0]),
 					lng: parseFloat(location[1])
 				},
-				image: `${domain}/uploads/${filename}`,
+				image: `${domain}/${filename}`,
 				description: req.body.description,
 				env: environment === 'development' ? environment : undefined
 			})
