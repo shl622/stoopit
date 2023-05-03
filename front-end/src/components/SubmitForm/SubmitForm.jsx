@@ -209,7 +209,7 @@ const SubmitForm = ({ imageBlob = undefined }) => {
 						</button>
 					</div>
 					{showSelectionMap && (
-						<div className="mapDiv">
+						<div className="mapDiv map-fullscreen">
 							<MapWrapper
 								Component={SelectionMap}
 								center={currentPosition}
