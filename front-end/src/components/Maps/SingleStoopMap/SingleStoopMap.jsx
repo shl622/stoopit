@@ -11,13 +11,15 @@ export default function SingleStoopMap() {
 			try {
 				const selectedStoop = (
 					await (
-						await fetch(`http://localhost:8080/api/stoop/?id=${id}`)
+						await fetch(
+							`https://sea-turtle-app-pvtu7.ondigitalocean.app/api/stoop/?id=${id}`
+						)
 					).json()
 				).data
 				const stoops = (
 					await (
 						await fetch(
-							`http://localhost:8080/api/stoops/?lat=${selectedStoop.location.lat}&lng=${selectedStoop.location.lng}&range=10}`
+							`https://sea-turtle-app-pvtu7.ondigitalocean.app/api/stoops/?lat=${selectedStoop.location.lat}&lng=${selectedStoop.location.lng}&range=10}`
 						)
 					).json()
 				).data

@@ -73,7 +73,7 @@ const SubmitForm = ({ imageBlob = undefined }) => {
 			'location',
 			`${selectedLocation.lat}, ${selectedLocation.lng}`
 		)
-		fetch('http://localhost:8080/api/stoop', {
+		fetch('https://sea-turtle-app-pvtu7.ondigitalocean.app/api/stoop', {
 			method: 'POST',
 			body: formData
 		})
