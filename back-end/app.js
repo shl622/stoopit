@@ -1,5 +1,6 @@
 // import
 const express = require('express')
+const fs = require('fs')
 const path = require('path')
 const fileUpload = require('express-fileupload')
 const cors = require('cors')
@@ -61,7 +62,8 @@ if (environment === 'production') {
 }
 
 // Serve static files from the uploads folder
-app.use('/uploads', express.static(path.join(__dirname, 'uploads')))
+const uploadsDir = path.join(__dirname, 'uploads')
+app.use('/uploads', express.static(uploadsDir))
 
 app.get('/api/stoops', async (req, res) => {
 	const query = req?.query
@@ -135,6 +137,8 @@ app.post('/api/stoop', async (req, res) => {
 		} else {
 			let file = req.files.file
 			let filename = Date.now() + file.name.replaceAll(' ', '')
+			let uploadDir = path.join(__dirname, 'uploads')
+			let filePath = path.join(uploadDir, filename)
 
 			// await file.mv(path.join(__dirname, '/uploads/', filename))
 			const s3Params = {
@@ -145,7 +149,7 @@ app.post('/api/stoop', async (req, res) => {
 			}
 			const putObject = new s3.PutObjectCommand(s3Params)
 			const uploadResponse = await client.send(putObject)
-			console.log('s3: ', uploadResponse)
+
 			const newStoop = await stoopDB.create({
 				stoopId: parseInt(
 					Date.now() + Math.floor(Math.random() * 10).toString()

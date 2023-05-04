@@ -1,9 +1,7 @@
 import './SubmitForm.css'
 import { getLocationFromExifData } from '../../utils/location'
-
 import { useForm } from 'react-hook-form'
 import { useState, useEffect, useContext } from 'react'
-// import { useLocationHook } from '../../hooks/useLocationHook'
 import SelectionMap from '../Maps/MapSelection/MapSelection'
 import ImgIcon from '../Icons/Img'
 import MapWrapper from '../../containers/MapWrapper'
@@ -41,7 +39,6 @@ const SubmitForm = ({ imageBlob = undefined }) => {
 				handleGeoLocation(defaultLocation)
 			} catch (error) {
 				console.error('Error:', error)
-				// Handle the error, such as displaying an error message to the user.
 			}
 		}
 
@@ -212,7 +209,7 @@ const SubmitForm = ({ imageBlob = undefined }) => {
 						</button>
 					</div>
 					{showSelectionMap && (
-						<div className="mapDiv">
+						<div className="mapDiv map-fullscreen">
 							<MapWrapper
 								Component={SelectionMap}
 								center={currentPosition}

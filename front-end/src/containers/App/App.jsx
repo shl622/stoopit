@@ -26,7 +26,7 @@ const App = () => {
 	const { pathname } = useLocation()
 	const [showTopNav, setShowTopNav] = useState(true)
 	useEffect(() => {
-		if (pathname === '/upload') {
+		if (pathname === '/upload' || pathname.startsWith('/map')) {
 			setShowTopNav(false)
 		} else {
 			setShowTopNav(true)

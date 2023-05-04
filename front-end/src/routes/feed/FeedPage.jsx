@@ -1,7 +1,6 @@
 import './FeedPage.css'
 import { useEffect } from 'react'
 import Card from '../../components/Card/Card'
-// import TopNav from '../../components/TopNav/TopNav'
 import { useContext } from 'react'
 import mapContext from '../../context/map'
 import { calculateDistance } from '../../utils/location'
@@ -45,12 +44,6 @@ const FeedPage = ({ selectedRange, setSelectedRange }) => {
 
 	return (
 		<>
-			{/* <TopNav
-				currentPosition={currentPosition}
-				stoops={stoops}
-				selectedRange={selectedRange}
-				setSelectedRange={setSelectedRange}
-			/> */}
 			<div className="feed">
 				{loading && <Spinner />}
 				{stoops.length === 0 && (
