@@ -7,6 +7,7 @@ const cors = require('cors')
 const dotenv = require('dotenv')
 const mongoose = require('mongoose')
 const stoopDB = require('./models/stoop')
+const s3 = require('@aws-sdk/client-s3')
 
 dotenv.config()
 const app = express()
@@ -19,6 +20,14 @@ const domain =
 	environment === 'production'
 		? 'https://sea-turtle-app-pvtu7.ondigitalocean.app'
 		: 'http://localhost:8080'
+
+const client = new s3.S3Client({
+	region: 'us-east-2',
+	credentials: {
+		accessKeyId: process.env.AWS_ACCESS_KEY_ID,
+		secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY
+	}
+})
 
 const { calculateDistance } = require('./utils/distance.js')
 
@@ -131,17 +140,16 @@ app.post('/api/stoop', async (req, res) => {
 			let uploadDir = path.join(__dirname, 'uploads')
 			let filePath = path.join(uploadDir, filename)
 
-			// Check if the 'uploads' folder exists, if not, create it
-			if (!fs.existsSync(uploadDir)) {
-				fs.mkdirSync(uploadDir)
+			// await file.mv(path.join(__dirname, '/uploads/', filename))
+			const s3Params = {
+				Bucket: 'stoopit-data',
+				Key: `uploads/${filename}`,
+				Body: file.data,
+				ContentType: file.mimetype
 			}
+			const putObject = new s3.PutObjectCommand(s3Params)
+			const uploadResponse = await client.send(putObject)
 
-			file.mv(filePath, (err) => {
-				if (err) {
-					console.error(err)
-					return res.status(500).send(err)
-				}
-			})
 			const newStoop = await stoopDB.create({
 				stoopId: parseInt(
 					Date.now() + Math.floor(Math.random() * 10).toString()
@@ -151,7 +159,7 @@ app.post('/api/stoop', async (req, res) => {
 					lat: parseFloat(location[0]),
 					lng: parseFloat(location[1])
 				},
-				image: `${domain}/uploads/${filename}`,
+				image: `https://stoopit-data.s3.us-east-2.amazonaws.com/uploads/${filename}`,
 				description: req.body.description,
 				env: environment === 'development' ? environment : undefined
 			})
