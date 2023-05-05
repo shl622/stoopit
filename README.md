@@ -1,7 +1,9 @@
 # StoopIt Project
 
 ### Deployment Link
+
 https://sea-turtle-app-pvtu7.ondigitalocean.app
+
 ### Team Members
 
 [Corey Chen](https://github.com/coherency1), [Malachi Daniel](https://github.com/163dgm), [Kai Elwood-Dieu](), [Cheng Charles Ji](https://github.com/szcharlesji), [Brian Lee](https://github.com/shl622)
@@ -30,4 +32,4 @@ If the application is easier than expected, there are many potential improvement
 
 ### Contribution
 
-If you are interesting in contributing to this project, please refer to [CONTRIBUTING.md](./CONTRIBUTING.md).
+If you are interesting in contributing to StoopIt, please refer to [CONTRIBUTING.md](./CONTRIBUTING.md).
