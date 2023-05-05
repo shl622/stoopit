@@ -140,7 +140,6 @@ app.post('/api/stoop', async (req, res) => {
 			let uploadDir = path.join(__dirname, 'uploads')
 			let filePath = path.join(uploadDir, filename)
 
-			// await file.mv(path.join(__dirname, '/uploads/', filename))
 			const s3Params = {
 				Bucket: 'stoopit-data',
 				Key: `uploads/${filename}`,
