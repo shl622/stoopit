@@ -7,6 +7,7 @@ import { calculateDistance } from '../../utils/location'
 import { useState } from 'react'
 import Spinner from '../../components/SpinnerLoader/SpinnerLoader'
 import stoopContext from '../../context/stoop'
+import { DateTime } from 'luxon'
 
 const FeedPage = ({ selectedRange, setSelectedRange }) => {
 	const { currentPosition } = useContext(mapContext)
@@ -27,9 +28,12 @@ const FeedPage = ({ selectedRange, setSelectedRange }) => {
 				.then((res) => res.json())
 				.then((res) => {
 					function sortbytime(a, b) {
-						if (a.timestamp > b.timestamp) {
+						const aDate = DateTime.fromISO(a.createdAt)
+						const bDate = DateTime.fromISO(b.createdAt)
+
+						if (aDate > bDate) {
 							return -1
-						} else if (a.timestamp < b.timestamp) {
+						} else if (aDate < bDate) {
 							return 1
 						} else {
 							return 0
@@ -67,7 +71,7 @@ const FeedPage = ({ selectedRange, setSelectedRange }) => {
 								id={stoop._id}
 								image={stoop.image}
 								title={stoop.title}
-								timestamp={stoop.timestamp}
+								timestamp={stoop.createdAt}
 								lat={stoop.location.lat}
 								lng={stoop.location.lng}
 								description={stoop.description}

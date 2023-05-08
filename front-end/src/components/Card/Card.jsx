@@ -39,17 +39,18 @@ function Card(props) {
 				</figure>
 				<div className="card-body card-body-layout">
 					<div className="text-stack">
-						<h2 className="card-title">{title}</h2>
-
+						<h2 className="card-title">
+							{title}
+							<span id="timestamp">
+								{DateTime.fromISO(timestamp)
+									.toLocal()
+									.toRelative()}
+							</span>
+						</h2>
 						<p className="stoop-text">{description}</p>
 					</div>
 					<div className="card-actions justify-end">
 						<div className="text-stack">
-							<p>
-								{DateTime.fromMillis(
-									parseInt(timestamp)
-								).toRelative()}
-							</p>
 							<div>
 								<button
 									className="map-button"
