@@ -115,18 +115,12 @@ back-end/
 ## Building for Production
 
 StoopIt is uses [React.js](https://react.dev/) on the frontend that gets served through an [Express.js](https://expressjs.com/) backend server as static files.
-In order to get StoopIt ready for production, the React frontend will first be built.
+In order to get StoopIt ready for production, the React frontend will first be built and then the backend will be ran in a way to serve the built frontend.
+
 For convienence, this can be done in the root directory:
 
 ```javascript
-npm run build
+npm run dev-production
 ```
 
-Once the frontend has been built for production, the backend needs to be started in production mode.
-This can also be done in the root directory, with a caveat that you must pass in the correct `NODE_ENV` environment, make sure to type this command exactly:
-
-```javascript
-NODE_ENV=production npm run start
-```
-
-StoopIt will now be served from `http://localhost:8080` and will be in production mode.
+StoopIt will now be served from `http://localhost:8080` and will be in production mode, this means you will be **uploading** and **viewing** data from the **production database**, be careful.

@@ -10,6 +10,7 @@
 		"start": "cd back-end && npm run start",
 		"format": "prettier ./**/*.{js,jsx,css,test.js,json} --write",
 		"dev-fe": "cd front-end && npm run dev",
-		"dev-be": "cd back-end && npm run dev"
+		"dev-be": "cd back-end && npm run dev",
+		"dev-production": "npm run build && NODE_ENV=production npm run start"
 	}
 }
