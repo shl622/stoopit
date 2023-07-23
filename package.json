@@ -19,7 +19,17 @@
 		"eslint-plugin-jest": "^27.2.1",
 		"eslint-plugin-jsx-a11y": "^6.7.1",
 		"jest": "^27.5.1",
-		"tailwindcss": "^3.2.7"
+		"tailwindcss": "^3.2.7",
+		"@googlemaps/react-wrapper": "^1.1.35",
+		"daisyui": "^2.51.3",
+		"exif-js": "^2.3.0",
+		"js-base64": "^3.7.5",
+		"luxon": "^3.3.0",
+		"react": "^18.2.0",
+		"react-dom": "^18.2.0",
+		"react-hook-form": "^7.43.3",
+		"react-router-dom": "^6.8.2",
+		"theme-change": "^2.3.0"
 	},
 	"scripts": {
 		"prepare": "husky install",
