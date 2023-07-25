@@ -28,7 +28,7 @@ export default function FullMap({
 			fetch(
 				`${
 					process.env.NODE_ENV === 'production'
-						? 'https://sea-turtle-app-pvtu7.ondigitalocean.app'
+						? ''
 						: 'http://localhost:8080'
 				}/api/stoops?lat=${currentPosition.lat}&lng=${
 					currentPosition.lng
