@@ -25100,7 +25100,7 @@
 																fetch(
 																	''
 																		.concat(
-																			'https://sea-turtle-app-pvtu7.ondigitalocean.app',
+																			'',
 																			'/api/stoop/?id='
 																		)
 																		.concat(
@@ -25122,7 +25122,7 @@
 																fetch(
 																	''
 																		.concat(
-																			'https://sea-turtle-app-pvtu7.ondigitalocean.app',
+																			'',
 																			'/api/stoops/?lat='
 																		)
 																		.concat(
