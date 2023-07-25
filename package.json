@@ -32,12 +32,11 @@
 		"theme-change": "^2.3.0"
 	},
 	"scripts": {
-		"prepare": "husky install",
-		"setup": "cd front-end && npm i && cd ../back-end && npm i && cd ..",
+		"setup": "cd front-end && npm i && cd ../api && npm i && cd ..",
 		"start": "cd api && npm run start",
 		"format": "prettier ./**/*.{js,jsx,css,test.js,json} --write",
 		"dev-fe": "cd front-end && npm run dev",
-		"dev-be": "cd back-end && npm run dev",
+		"dev-be": "cd api && npm run dev",
 		"dev-production": "npm run build && NODE_ENV=production npm run start"
 	}
 }
