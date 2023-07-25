@@ -19,7 +19,7 @@ const FeedPage = ({ selectedRange, setSelectedRange }) => {
 			fetch(
 				`${
 					process.env.NODE_ENV === 'production'
-						? ''
+						? 'https://stoopit-ajl786eu8-shl622.vercel.app/'
 						: 'http://localhost:8080'
 				}/api/stoops?lat=${currentPosition.lat}&lng=${
 					currentPosition.lng
