@@ -15,7 +15,6 @@
 		"theme-change": "^2.3.0"
 	},
 	"scripts": {
-		"prepare": "cd .. && husky install",
 		"dev": "react-scripts start",
 		"build": "react-scripts build",
 		"format": "cd ../ && npm run format",

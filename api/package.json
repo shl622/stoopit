@@ -2,12 +2,11 @@
 	"name": "back-end",
 	"version": "1.0.0",
 	"description": "",
-	"main": "app.js",
+	"main": "index.js",
 	"scripts": {
-		"prepare": "cd .. && husky install",
 		"test": "mocha tests/**/*.js --exit",
-		"dev": "nodemon --ignore .json app.js",
-		"start": "node app.js",
+		"dev": "nodemon --ignore .json index.js",
+		"start": "node index.js",
 		"coverage": "nyc npm run test",
 		"format": "cd ../ && npm run format"
 	},
