@@ -34,7 +34,6 @@
 	"scripts": {
 		"prepare": "husky install",
 		"setup": "cd front-end && npm i && cd ../back-end && npm i && cd ..",
-		"build": "cd front-end && npm run build",
 		"start": "cd back-end && npm run start",
 		"format": "prettier ./**/*.{js,jsx,css,test.js,json} --write",
 		"dev-fe": "cd front-end && npm run dev",

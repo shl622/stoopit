@@ -15322,11 +15322,9 @@
 								  (this.dt =
 										0 === t.offset
 											? t
-											: t
-													.setZone('UTC')
-													.plus({
-														minutes: t.offset
-													})),
+											: t.setZone('UTC').plus({
+													minutes: t.offset
+											  })),
 								  (this.originalZone = t.zone))
 						} else
 							'system' === t.zone.type
