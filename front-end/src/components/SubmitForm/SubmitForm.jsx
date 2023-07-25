@@ -73,7 +73,7 @@ const SubmitForm = ({ imageBlob = undefined }) => {
 		fetch(
 			`${
 				process.env.NODE_ENV === 'production'
-					? 'https://sea-turtle-app-pvtu7.ondigitalocean.app'
+					? ''
 					: 'http://localhost:8080'
 			}/api/stoop`,
 			{
