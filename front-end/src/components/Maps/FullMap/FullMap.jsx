@@ -45,6 +45,7 @@ export default function FullMap({
 							return 0
 						}
 					}
+					console.log(res)
 					res.data.sort(sortbytime)
 					setStoops(res.data)
 					setLoading(false)

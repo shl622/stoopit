@@ -16,10 +16,7 @@ const port = 8080
 const environment = process?.env?.NODE_ENV ?? 'development'
 
 //change domain for static files based on production or dev
-const domain =
-	environment === 'production'
-		? 'https://sea-turtle-app-pvtu7.ondigitalocean.app'
-		: 'http://localhost:8080'
+const domain = environment === 'production' ? '' : 'http://localhost:3000'
 
 const client = new s3.S3Client({
 	region: 'us-east-2',
@@ -92,6 +89,7 @@ app.get('/api/stoops', async (req, res) => {
 			data: filteredStoops
 		})
 	} catch (err) {
+		res.json({ length: 0, data: [] })
 		console.log(err.message)
 	}
 })

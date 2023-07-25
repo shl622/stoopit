@@ -25,6 +25,7 @@ const FeedPage = ({ selectedRange, setSelectedRange }) => {
 					currentPosition.lng
 				}&range=${selectedRange}`
 			)
+				//response valid
 				.then((res) => res.json())
 				.then((res) => {
 					function sortbytime(a, b) {
@@ -39,6 +40,7 @@ const FeedPage = ({ selectedRange, setSelectedRange }) => {
 							return 0
 						}
 					}
+					console.log(res)
 					res.data.sort(sortbytime)
 					setStoops(res.data)
 					setLoading(false)
